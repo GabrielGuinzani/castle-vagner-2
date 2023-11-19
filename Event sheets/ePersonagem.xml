@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>ePersonagem</name>
+    <events>
+        <event-group description="" sid="386745564891315" title="Controlador Animações" />
+        <event-block sid="898995710301171">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="465934439372599" type="System" />
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="250062360708556" type="Heroi">
+                    <param id="0" name="Animation">heroi.estado</param>
+                    <param id="1" name="From">1</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="352753296906343">
+                    <conditions>
+                        <condition behavior="8Direction" id="0" name="Is moving" sid="864317313816528" type="Heroi" />
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="512305427898818" type="Heroi">
+                            <param id="0" name="Instance variable">estado</param>
+                            <param id="1" name="Value">&quot;Walk&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="539501700871776">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="679077064442300" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="482253491939158" type="Heroi">
+                            <param id="0" name="Instance variable">estado</param>
+                            <param id="1" name="Value">&quot;Idle&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="335320442820318">
+            <conditions>
+                <condition id="-2" name="Compare Y" sid="152395658308641" type="Heroi">
+                    <param id="0" name="Comparison">2</param>
+                    <param id="1" name="Y co-ordinate">130</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Set Y" sid="712743688834791" type="Heroi">
+                    <param id="0" name="Y">130</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="101265426453633">
+            <conditions>
+                <condition id="-2" name="Compare Y" sid="780773753154287" type="Heroi">
+                    <param id="0" name="Comparison">4</param>
+                    <param id="1" name="Y co-ordinate">175</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Set Y" sid="270116528405926" type="Heroi">
+                    <param id="0" name="Y">175</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>ePrincipal</name>
+    <events>
+        <include>ePersonagem</include>
+        <event-block sid="607726091112446">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="663898186606271" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Play" sid="149494973923244" type="Audio">
+                    <param id="0" name="Audio file">soundtrack</param>
+                    <param id="2" name="Loop">1</param>
+                    <param id="3" name="Volume">0</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-group description="" sid="960526604722059" title="Input Teclado">
+            <sub-events>
+                <event-block sid="263645046012442">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="950018137334621" type="Keyboard">
+                            <param id="0" name="Key">68</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="8Direction" id="7" name="Simulate control" sid="207070754839300" type="Heroi">
+                            <param id="0" name="Control">1</param>
+                        </action>
+                        <action id="7" name="Set mirrored" sid="265518127468386" type="Heroi">
+                            <param id="0" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="126731927395822">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="910344371325956" type="Keyboard">
+                            <param id="0" name="Key">65</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="8Direction" id="7" name="Simulate control" sid="700898131986184" type="Heroi">
+                            <param id="0" name="Control">0</param>
+                        </action>
+                        <action id="7" name="Set mirrored" sid="941775395540560" type="Heroi">
+                            <param id="0" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="450279594864423">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="449066533526085" type="Keyboard">
+                            <param id="0" name="Key">87</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="8Direction" id="7" name="Simulate control" sid="212061570161267" type="Heroi">
+                            <param id="0" name="Control">2</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-block sid="659605074946247">
+            <conditions>
+                <condition id="2" name="Key is down" sid="162855414163402" type="Keyboard">
+                    <param id="0" name="Key">83</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="8Direction" id="7" name="Simulate control" sid="436505906646524" type="Heroi">
+                    <param id="0" name="Control">3</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
