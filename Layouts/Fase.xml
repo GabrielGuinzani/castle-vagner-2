@@ -240,7 +240,7 @@
                         <x>-8.380958557</x>
                         <y>108.987106323</y>
                         <z>0</z>
-                        <width>512</width>
+                        <width>331.002380371</width>
                         <height>77</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
@@ -274,13 +274,20 @@
                         <initial-visibility>Visible</initial-visibility>
                         <hotspot>Top-left</hotspot>
                     </properties>
+                    <effect-instances>
+                        <effect-instance type="Brightness">
+                            <parameters>
+                                <brightness>0.9</brightness>
+                            </parameters>
+                        </effect-instance>
+                    </effect-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>-53.336273193</x>
+                        <x>-0.336303711</x>
                         <y>126.149642944</y>
                         <z>0</z>
-                        <width>937</width>
+                        <width>320.04888916</width>
                         <height>66</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
@@ -337,6 +344,13 @@
                     </properties>
                     <instance-variables>
                         <estado></estado>
+                        <noAr>false</noAr>
+                        <sombra>0</sombra>
+                        <noAr_dir></noAr_dir>
+                        <atacando>false</atacando>
+                        <combo>1</combo>
+                        <combo_maximo>3</combo_maximo>
+                        <combo_timer>0</combo_timer>
                     </instance-variables>
                     <behavior-instances>
                         <behavior-instance type="8Direction">
@@ -355,15 +369,61 @@
                                 <bound-by>Edge</bound-by>
                             </properties>
                         </behavior-instance>
+                        <behavior-instance type="Platform">
+                            <properties>
+                                <max-speed>0</max-speed>
+                                <acceleration>0</acceleration>
+                                <deceleration>0</deceleration>
+                                <jump-strength>0</jump-strength>
+                                <gravity>500</gravity>
+                                <max-fall-speed>400</max-fall-speed>
+                                <double-jump>Disabled</double-jump>
+                                <jump-sustain>0</jump-sustain>
+                                <default-controls>No</default-controls>
+                                <initial-state>Disabled</initial-state>
+                            </properties>
+                        </behavior-instance>
                     </behavior-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>22.434593201</x>
-                        <y>143.912338257</y>
+                        <x>26.633247375</x>
+                        <y>146.244857788</y>
                         <z>0</z>
                         <width>27.087028503</width>
                         <height>39.727642059</height>
+                        <depth>0</depth>
+                        <hotspotX>0.51111114</hotspotX>
+                        <hotspotY>1</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="Heroi_hitbox" uid="20">
+                    <properties>
+                        <initial-visibility>Invisible</initial-visibility>
+                        <initial-animation>Default</initial-animation>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Disabled</collisions>
+                    </properties>
+                    <behavior-instances>
+                        <behavior-instance type="Pin" />
+                    </behavior-instances>
+                    <effect-instances>
+                        <effect-instance type="Brightness">
+                            <parameters>
+                                <brightness>0</brightness>
+                            </parameters>
+                        </effect-instance>
+                    </effect-instances>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>-51.726348877</x>
+                        <y>111.083656311</y>
+                        <z>0</z>
+                        <width>27.086999893</width>
+                        <height>39.728000641</height>
                         <depth>0</depth>
                         <hotspotX>0.51111114</hotspotX>
                         <hotspotY>1</hotspotY>
@@ -375,6 +435,14 @@
             <effects />
         </layer>
     </layers>
-    <nonworld-instances />
+    <nonworld-instances>
+        <instance type="ataquesHeroi" uid="21">
+            <properties>
+                <width>10</width>
+                <height>1</height>
+                <depth>1</depth>
+            </properties>
+        </instance>
+    </nonworld-instances>
     <effects />
 </c2layout>

@@ -3,6 +3,25 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>ePersonagem</name>
     <events>
+        <event-block sid="808551727288282">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="691492120923111" type="System" />
+            </conditions>
+            <actions>
+                <action id="2" name="Set at X" sid="576643968277460" type="ataquesHeroi">
+                    <param id="0" name="X">1</param>
+                    <param id="1" name="Value">2</param>
+                </action>
+                <action id="2" name="Set at X" sid="939424296918516" type="ataquesHeroi">
+                    <param id="0" name="X">2</param>
+                    <param id="1" name="Value">2</param>
+                </action>
+                <action id="2" name="Set at X" sid="916686323940450" type="ataquesHeroi">
+                    <param id="0" name="X">3</param>
+                    <param id="1" name="Value">2</param>
+                </action>
+            </actions>
+        </event-block>
         <event-group description="" sid="386745564891315" title="Controlador Animações" />
         <event-block sid="898995710301171">
             <conditions>
@@ -10,10 +29,21 @@
             </conditions>
             <actions>
                 <action id="4" name="Set animation" sid="250062360708556" type="Heroi">
-                    <param id="0" name="Animation">heroi.estado</param>
+                    <param id="0" name="Animation">Heroi.estado</param>
                     <param id="1" name="From">1</param>
                 </action>
             </actions>
+        </event-block>
+        <event-block sid="116196128645702">
+            <conditions>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="887379603937826" type="Heroi">
+                    <param id="0" name="Instance variable">noAr</param>
+                </condition>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="156057716368139" type="Heroi">
+                    <param id="0" name="Instance variable">atacando</param>
+                </condition>
+            </conditions>
+            <actions />
             <sub-events>
                 <event-block sid="352753296906343">
                     <conditions>
@@ -39,28 +69,499 @@
                 </event-block>
             </sub-events>
         </event-block>
-        <event-block sid="335320442820318">
+        <event-group description="" sid="696662991706993" title="Input Teclado">
+            <sub-events>
+                <event-group description="" sid="671421068393010" title="Ataques">
+                    <sub-events>
+                        <event-block sid="895379366526838">
+                            <conditions>
+                                <condition id="0" name="On key pressed" sid="908531786208422" type="Keyboard">
+                                    <param id="0" name="Key">69</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="735655674789349">
+                                    <conditions>
+                                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="266205709533449" type="Heroi">
+                                            <param id="0" name="Instance variable">atacando</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="536234234511548">
+                                            <conditions>
+                                                <condition id="-8" name="Is boolean instance variable set" sid="654852408246379" type="Heroi">
+                                                    <param id="0" name="Instance variable">noAr</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions />
+                                        </event-block>
+                                        <event-block sid="781349467624235">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="812268288863056" type="System" />
+                                            </conditions>
+                                            <actions>
+                                                <action id="-13" name="Set boolean" sid="414675057277574" type="Heroi">
+                                                    <param id="0" name="Instance variable">atacando</param>
+                                                    <param id="1" name="Value">1</param>
+                                                </action>
+                                                <action id="-10" name="Set value" sid="744583245201490" type="Heroi">
+                                                    <param id="0" name="Instance variable">estado</param>
+                                                    <param id="1" name="Value">&quot;Attack&quot; &amp; Heroi.combo</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="810438506886649">
+                                            <conditions>
+                                                <condition id="-7" name="Compare instance variable" sid="159976240987202" type="Heroi">
+                                                    <param id="0" name="Instance variable">combo</param>
+                                                    <param id="1" name="Comparison">5</param>
+                                                    <param id="2" name="Value">Heroi.combo_maximo</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-10" name="Set value" sid="557420459715380" type="Heroi">
+                                                    <param id="0" name="Instance variable">combo</param>
+                                                    <param id="1" name="Value">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="153670466519274">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="398940276082433" type="System" />
+                                            </conditions>
+                                            <actions>
+                                                <action id="-11" name="Add to" sid="337342307625776" type="Heroi">
+                                                    <param id="0" name="Instance variable">combo</param>
+                                                    <param id="1" name="Value">1</param>
+                                                </action>
+                                                <action id="-10" name="Set value" sid="463670594710596" type="Heroi">
+                                                    <param id="0" name="Instance variable">combo_timer</param>
+                                                    <param id="1" name="Value">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="338930916463427">
+                                            <conditions />
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="247503505324563" type="System">
+                                                    <param id="0" name="Object to create">Heroi_hitbox</param>
+                                                    <param id="1" name="Layer">Heroi.LayerName</param>
+                                                    <param id="2" name="X">Heroi.X</param>
+                                                    <param id="3" name="Y">Heroi.Y</param>
+                                                </action>
+                                                <action behavior="Pin" id="0" name="Pin to object" sid="104376583345896" type="Heroi_hitbox">
+                                                    <param id="0" name="Pin to">Heroi</param>
+                                                    <param id="1" name="Mode">0</param>
+                                                </action>
+                                                <action id="-16" name="Wait" sid="547039229217106" type="System">
+                                                    <param id="0" name="Seconds">0</param>
+                                                </action>
+                                                <action id="4" name="Set animation" sid="170982871075962" type="Heroi_hitbox">
+                                                    <param id="0" name="Animation">Heroi.estado</param>
+                                                    <param id="1" name="From">1</param>
+                                                </action>
+                                            </actions>
+                                            <sub-events>
+                                                <event-block sid="414352149175481">
+                                                    <conditions>
+                                                        <condition id="7" name="Is mirrored" sid="205459313232375" type="Heroi" />
+                                                    </conditions>
+                                                    <actions>
+                                                        <action id="7" name="Set mirrored" sid="362156827120699" type="Heroi_hitbox">
+                                                            <param id="0" name="State">0</param>
+                                                        </action>
+                                                    </actions>
+                                                </event-block>
+                                            </sub-events>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="285480641763543">
+                            <conditions>
+                                <condition id="-8" name="Is boolean instance variable set" sid="513186305157995" type="Heroi">
+                                    <param id="0" name="Instance variable">atacando</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="329880351016664">
+                                    <conditions>
+                                        <condition id="5" name="On any finished" sid="183711753733159" type="Heroi" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="-13" name="Set boolean" sid="416930913162463" type="Heroi">
+                                            <param id="0" name="Instance variable">atacando</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                        <action id="-11" name="Add to" sid="697675821365402" type="Heroi">
+                                            <param id="0" name="Instance variable">combo_timer</param>
+                                            <param id="1" name="Value">0.5</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="871095382271137">
+                                    <conditions>
+                                        <condition id="-8" name="Is boolean instance variable set" sid="832752198028403" type="Heroi">
+                                            <param id="0" name="Instance variable">noAr</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="729144595470474">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="820773481274198" type="Heroi">
+                                    <param id="0" name="Instance variable">combo_timer</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-12" name="Subtract from" sid="921433635173832" type="Heroi">
+                                    <param id="0" name="Instance variable">combo_timer</param>
+                                    <param id="1" name="Value">dt</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="829377400505194">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="885325099448904" type="Heroi">
+                                            <param id="0" name="Instance variable">combo_timer</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Set value" sid="626721887309623" type="Heroi">
+                                            <param id="0" name="Instance variable">combo_timer</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                        <action id="-10" name="Set value" sid="269337689995099" type="Heroi">
+                                            <param id="0" name="Instance variable">combo</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="258635709659355" title="Caminhando">
+                    <sub-events>
+                        <event-block sid="366210647120386">
+                            <conditions>
+                                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="873321625528202" type="Heroi">
+                                    <param id="0" name="Instance variable">noAr</param>
+                                </condition>
+                                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="120736229668208" type="Heroi">
+                                    <param id="0" name="Instance variable">atacando</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="285560373651509">
+                                    <conditions>
+                                        <condition id="2" name="Key is down" sid="148411681767985" type="Keyboard">
+                                            <param id="0" name="Key">68</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="8Direction" id="7" name="Simulate control" sid="382324322636668" type="Heroi">
+                                            <param id="0" name="Control">1</param>
+                                        </action>
+                                        <action id="7" name="Set mirrored" sid="662797291766651" type="Heroi">
+                                            <param id="0" name="State">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="655123011012814">
+                                    <conditions>
+                                        <condition id="2" name="Key is down" sid="562957427002163" type="Keyboard">
+                                            <param id="0" name="Key">65</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="8Direction" id="7" name="Simulate control" sid="330137260187624" type="Heroi">
+                                            <param id="0" name="Control">0</param>
+                                        </action>
+                                        <action id="7" name="Set mirrored" sid="907275131970701" type="Heroi">
+                                            <param id="0" name="State">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="967897513500291">
+                                    <conditions>
+                                        <condition id="2" name="Key is down" sid="899061477564578" type="Keyboard">
+                                            <param id="0" name="Key">87</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="8Direction" id="7" name="Simulate control" sid="204056150891804" type="Heroi">
+                                            <param id="0" name="Control">2</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="717173288617026">
+                                    <conditions>
+                                        <condition id="2" name="Key is down" sid="973027648728020" type="Keyboard">
+                                            <param id="0" name="Key">83</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="8Direction" id="7" name="Simulate control" sid="966377701626470" type="Heroi">
+                                            <param id="0" name="Control">3</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="955195400948665" title="Pular">
+                    <sub-events>
+                        <event-block sid="912390595322796">
+                            <conditions>
+                                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="892049769501183" type="Heroi">
+                                    <param id="0" name="Instance variable">noAr</param>
+                                </condition>
+                                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="288440767199969" type="Heroi">
+                                    <param id="0" name="Instance variable">atacando</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="643337267822737" type="Heroi">
+                                    <param id="0" name="Instance variable">sombra</param>
+                                    <param id="1" name="Value">Heroi.Y</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="182458378726454">
+                            <conditions>
+                                <condition id="0" name="On key pressed" sid="943385536297314" type="Keyboard">
+                                    <param id="0" name="Key">32</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="746157924591840">
+                                    <conditions>
+                                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="530281152154250" type="Heroi">
+                                            <param id="0" name="Instance variable">noAr</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-13" name="Set boolean" sid="166407516504846" type="Heroi">
+                                            <param id="0" name="Instance variable">noAr</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="822883830902188">
+                                            <conditions>
+                                                <condition behavior="8Direction" id="0" inverted="1" name="Is moving" sid="375424505179503" type="Heroi" />
+                                            </conditions>
+                                            <actions>
+                                                <action id="0" name="Call function" sid="197089047081917" type="Function">
+                                                    <param id="0" name="Name">&quot;pulo_parado&quot;</param>
+                                                    <param id="1" name="Parameter {n}"></param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="840568648557382">
+                                            <conditions>
+                                                <condition id="2" name="Key is down" sid="678222399398407" type="Keyboard">
+                                                    <param id="0" name="Key">68</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="0" name="Call function" sid="461908680351481" type="Function">
+                                                    <param id="0" name="Name">&quot;pulo_movendo&quot;</param>
+                                                    <param id="1" name="Parameter {n}">&quot;D&quot;</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="367158890315965">
+                                            <conditions>
+                                                <condition id="2" name="Key is down" sid="257027321529660" type="Keyboard">
+                                                    <param id="0" name="Key">65</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="0" name="Call function" sid="848338346975360" type="Function">
+                                                    <param id="0" name="Name">&quot;pulo_movendo&quot;</param>
+                                                    <param id="1" name="Parameter {n}">&quot;E&quot;</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block any="1" sid="598990670779217">
+                                            <conditions>
+                                                <condition id="2" name="Key is down" sid="953426795874079" type="Keyboard">
+                                                    <param id="0" name="Key">87</param>
+                                                </condition>
+                                                <condition id="2" name="Key is down" sid="921823220018066" type="Keyboard">
+                                                    <param id="0" name="Key">83</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions />
+                                            <sub-events>
+                                                <event-block sid="431115381712681">
+                                                    <conditions>
+                                                        <condition id="2" inverted="1" name="Key is down" sid="625728740758796" type="Keyboard">
+                                                            <param id="0" name="Key">68</param>
+                                                        </condition>
+                                                        <condition id="2" inverted="1" name="Key is down" sid="381926768179293" type="Keyboard">
+                                                            <param id="0" name="Key">65</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action id="0" name="Call function" sid="919974031373234" type="Function">
+                                                            <param id="0" name="Name">&quot;pulo_parado&quot;</param>
+                                                            <param id="1" name="Parameter {n}"></param>
+                                                        </action>
+                                                    </actions>
+                                                </event-block>
+                                            </sub-events>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="950455514545717">
+                            <conditions>
+                                <condition id="0" name="On function" sid="361698553272547" type="Function">
+                                    <param id="0" name="Name">&quot;pulo_parado&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="789919304054846" type="Heroi">
+                                    <param id="0" name="Instance variable">estado</param>
+                                    <param id="1" name="Value">&quot;JumpIdle&quot;</param>
+                                </action>
+                                <action behavior="Platform" id="11" name="Set enabled" sid="435795748000044" type="Heroi">
+                                    <param id="0" name="State">1</param>
+                                </action>
+                                <action behavior="Platform" id="9" name="Set vector Y" sid="240445544040448" type="Heroi">
+                                    <param id="0" name="Vector Y">-200</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="595567837898023">
+                            <conditions>
+                                <condition id="0" name="On function" sid="704800018444552" type="Function">
+                                    <param id="0" name="Name">&quot;pulo_movendo&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="396460842650491" type="Heroi">
+                                    <param id="0" name="Instance variable">noAr_dir</param>
+                                    <param id="1" name="Value">Function.Param(0)</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="757864793857209" type="Heroi">
+                                    <param id="0" name="Instance variable">estado</param>
+                                    <param id="1" name="Value">&quot;JumpWalk&quot;</param>
+                                </action>
+                                <action behavior="Platform" id="11" name="Set enabled" sid="402339654774637" type="Heroi">
+                                    <param id="0" name="State">1</param>
+                                </action>
+                                <action behavior="Platform" id="9" name="Set vector Y" sid="306012957809046" type="Heroi">
+                                    <param id="0" name="Vector Y">-200</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="191557997437442">
+                            <conditions>
+                                <condition id="-21" name="Is between values" sid="812056076420296" type="System">
+                                    <param id="0" name="Value">Heroi.Y</param>
+                                    <param id="1" name="Lower bound">Heroi.sombra - 1</param>
+                                    <param id="2" name="Upper bound">Heroi.sombra + 1</param>
+                                </condition>
+                                <condition id="-8" name="Is boolean instance variable set" sid="535357563014817" type="Heroi">
+                                    <param id="0" name="Instance variable">noAr</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="11" name="Set enabled" sid="123922357721431" type="Heroi">
+                                    <param id="0" name="State">0</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="458422740404134" type="Heroi">
+                                    <param id="0" name="Instance variable">estado</param>
+                                    <param id="1" name="Value">&quot;&quot;</param>
+                                </action>
+                                <action id="-13" name="Set boolean" sid="167420853511327" type="Heroi">
+                                    <param id="0" name="Instance variable">noAr</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="588903926601690" type="Heroi">
+                                    <param id="0" name="Instance variable">noAr_dir</param>
+                                    <param id="1" name="Value">&quot;&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="364060264775202">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="919380839114200" type="Heroi">
+                                    <param id="0" name="Instance variable">noAr_dir</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;D&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="8Direction" id="7" name="Simulate control" sid="693997297977334" type="Heroi">
+                                    <param id="0" name="Control">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="614438994455920">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="418303476873131" type="Heroi">
+                                    <param id="0" name="Instance variable">noAr_dir</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;E&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="8Direction" id="7" name="Simulate control" sid="783020642771347" type="Heroi">
+                                    <param id="0" name="Control">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+            </sub-events>
+        </event-group>
+        <event-block sid="691865502219822">
             <conditions>
-                <condition id="-2" name="Compare Y" sid="152395658308641" type="Heroi">
+                <condition id="-2" name="Compare Y" sid="911662521865468" type="Heroi">
                     <param id="0" name="Comparison">2</param>
                     <param id="1" name="Y co-ordinate">130</param>
                 </condition>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="783242251665077" type="Heroi">
+                    <param id="0" name="Instance variable">noAr</param>
+                </condition>
             </conditions>
             <actions>
-                <action id="-2" name="Set Y" sid="712743688834791" type="Heroi">
+                <action id="-2" name="Set Y" sid="949407577794585" type="Heroi">
                     <param id="0" name="Y">130</param>
                 </action>
             </actions>
         </event-block>
-        <event-block sid="101265426453633">
+        <event-block sid="745586277585638">
             <conditions>
-                <condition id="-2" name="Compare Y" sid="780773753154287" type="Heroi">
+                <condition id="-2" name="Compare Y" sid="204055558445537" type="Heroi">
                     <param id="0" name="Comparison">4</param>
                     <param id="1" name="Y co-ordinate">175</param>
                 </condition>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="198064121263267" type="Heroi">
+                    <param id="0" name="Instance variable">noAr</param>
+                </condition>
             </conditions>
             <actions>
-                <action id="-2" name="Set Y" sid="270116528405926" type="Heroi">
+                <action id="-2" name="Set Y" sid="318546466607097" type="Heroi">
                     <param id="0" name="Y">175</param>
                 </action>
             </actions>

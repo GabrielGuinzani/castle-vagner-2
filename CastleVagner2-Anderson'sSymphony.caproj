@@ -10,8 +10,10 @@
     <unique-id>2qpiupr2gjili</unique-id>
     <saved-with-version>28000</saved-with-version>
     <used-plugins>
+        <plugin author="Scirra" id="Arr" version="1">Array</plugin>
         <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
         <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
+        <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
@@ -20,9 +22,13 @@
     </used-plugins>
     <used-behaviors>
         <behavior author="Scirra" id="EightDir" version="1">8 Direction</behavior>
+        <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
+        <behavior author="Scirra" id="Platform" version="1">Platform</behavior>
         <behavior author="Scirra" id="bound" version="1">Bound to layout</behavior>
     </used-behaviors>
-    <used-effects />
+    <used-effects>
+        <effect author="Scirra" id="brightness">Brightness</effect>
+    </used-effects>
     <configurations>
         <configuration exporter-descname="HTML5" exporter-id="html5" name="HTML5" />
     </configurations>
@@ -118,6 +124,13 @@
             <plugin id="Sprite" />
             <instance-variables>
                 <instance-variable name="estado" sid="111064340797587" type="string" />
+                <instance-variable name="noAr" sid="719939267389042" type="boolean" />
+                <instance-variable name="sombra" sid="396116467795042" type="number" />
+                <instance-variable name="noAr_dir" sid="572615937930635" type="string" />
+                <instance-variable name="atacando" sid="758074974090546" type="boolean" />
+                <instance-variable name="combo" sid="847515955689234" type="number" />
+                <instance-variable name="combo_maximo" sid="935698267792283" type="number" />
+                <instance-variable name="combo_timer" sid="765329558709299" type="number" />
             </instance-variables>
             <behaviors>
                 <behavior-type name="8Direction" sid="791665349785325">
@@ -125,6 +138,9 @@
                 </behavior-type>
                 <behavior-type name="BoundToLayout" sid="538878781492128">
                     <behavior id="bound" />
+                </behavior-type>
+                <behavior-type name="Platform" sid="925502084702945">
+                    <behavior id="Platform" />
                 </behavior-type>
             </behaviors>
             <animation-folder>
@@ -225,7 +241,7 @@
                             <point x="0" y="0.393939" />
                         </collision-poly>
                     </frame>
-                    <frame duration="1" hotspotX="0.5" hotspotY="1" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-483897-free-knight-character-sprites-pixel-art\Knight_1\Walk.png">
+                    <frame duration="1" hotspotX="0.4375" hotspotY="0.984848" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-483897-free-knight-character-sprites-pixel-art\Knight_1\Walk.png">
                         <collision-poly>
                             <point x="0" y="0.287879" />
                             <point x="0" y="0.5" />
@@ -236,7 +252,7 @@
                             <point x="0" y="0.393939" />
                         </collision-poly>
                     </frame>
-                    <frame duration="1" hotspotX="0.511111" hotspotY="1" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-483897-free-knight-character-sprites-pixel-art\Knight_1\Walk.png">
+                    <frame duration="1" hotspotX="0.444444" hotspotY="1" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-483897-free-knight-character-sprites-pixel-art\Knight_1\Walk.png">
                         <collision-poly>
                             <point x="0" y="0.276923" />
                             <point x="0" y="0.492308" />
@@ -270,14 +286,444 @@
                         </collision-poly>
                     </frame>
                 </animation>
+                <animation framecount="3" loop="0" name="JumpWalk" pingpong="0" repeatcount="1" repeatto="0" sid="577005544770723" speed="5">
+                    <frame duration="1" hotspotX="0.509804" hotspotY="1" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-483897-free-knight-character-sprites-pixel-art\Knight_1\Jump.png" />
+                    <frame duration="1" hotspotX="0.509804" hotspotY="1" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-483897-free-knight-character-sprites-pixel-art\Knight_1\Jump.png" />
+                    <frame duration="999" hotspotX="0.5" hotspotY="1" />
+                </animation>
+                <animation framecount="2" loop="0" name="JumpIdle" pingpong="0" repeatcount="1" repeatto="0" sid="768065515667778" speed="5">
+                    <frame duration="1" hotspotX="0.509804" hotspotY="1" />
+                    <frame duration="200" hotspotX="0.5" hotspotY="1" />
+                </animation>
+                <animation framecount="6" loop="0" name="Dead" pingpong="0" repeatcount="1" repeatto="0" sid="217184687016274" speed="5">
+                    <frame duration="1" hotspotX="0.511111" hotspotY="1" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-483897-free-knight-character-sprites-pixel-art\Knight_1\Dead.png" />
+                    <frame duration="1" hotspotX="0.510204" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.510638" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="1" />
+                </animation>
+                <animation framecount="2" loop="0" name="Hurt" pingpong="0" repeatcount="1" repeatto="0" sid="704041468054540" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="1" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-483897-free-knight-character-sprites-pixel-art\Knight_1\Hurt.png">
+                        <collision-poly>
+                            <point x="0.4375" y="0.0163934" />
+                            <point x="1" y="0.0327869" />
+                            <point x="1" y="0.278689" />
+                            <point x="1" y="0.786885" />
+                            <point x="0.208333" y="0.721311" />
+                            <point x="0.1875" y="0.278689" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="1" />
+                </animation>
+                <animation framecount="6" loop="0" name="Attack1" pingpong="0" repeatcount="1" repeatto="0" sid="424093361547076" speed="16">
+                    <frame duration="3" hotspotX="0.511111" hotspotY="1" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-483897-free-knight-character-sprites-pixel-art\Knight_1\Attack 1.png">
+                        <collision-poly>
+                            <point x="0.244444" y="0.166667" />
+                            <point x="0.488889" y="0.030303" />
+                            <point x="0.622222" y="0.257576" />
+                            <point x="0.933333" y="0.5" />
+                            <point x="0.6" y="0.727273" />
+                            <point x="0.488889" y="0.969697" />
+                            <point x="0.177778" y="0.878788" />
+                            <point x="0.0666667" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="2" hotspotX="0.508197" hotspotY="1">
+                        <collision-poly>
+                            <point x="0.244444" y="0.166667" />
+                            <point x="0.488889" y="0.030303" />
+                            <point x="0.622222" y="0.257576" />
+                            <point x="0.933333" y="0.5" />
+                            <point x="0.6" y="0.727273" />
+                            <point x="0.488889" y="0.969697" />
+                            <point x="0.177778" y="0.878788" />
+                            <point x="0.0666667" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="1">
+                        <collision-poly>
+                            <point x="0.244444" y="0.166667" />
+                            <point x="0.488889" y="0.030303" />
+                            <point x="0.622222" y="0.257576" />
+                            <point x="0.933333" y="0.5" />
+                            <point x="0.6" y="0.727273" />
+                            <point x="0.488889" y="0.969697" />
+                            <point x="0.177778" y="0.878788" />
+                            <point x="0.0666667" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.514286" hotspotY="1">
+                        <collision-poly>
+                            <point x="0.244444" y="0.166667" />
+                            <point x="0.488889" y="0.030303" />
+                            <point x="0.622222" y="0.257576" />
+                            <point x="0.933333" y="0.5" />
+                            <point x="0.6" y="0.727273" />
+                            <point x="0.488889" y="0.969697" />
+                            <point x="0.177778" y="0.878788" />
+                            <point x="0.0666667" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="3" hotspotX="0.218391" hotspotY="0.973684">
+                        <collision-poly>
+                            <point x="0.244444" y="0.166667" />
+                            <point x="0.488889" y="0.030303" />
+                            <point x="0.622222" y="0.257576" />
+                            <point x="0.6" y="0.5" />
+                            <point x="0.6" y="0.727273" />
+                            <point x="0.488889" y="0.969697" />
+                            <point x="0.177778" y="0.878788" />
+                            <point x="0.0666667" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.514286" hotspotY="1">
+                        <collision-poly>
+                            <point x="0.244444" y="0.166667" />
+                            <point x="0.488889" y="0.030303" />
+                            <point x="0.622222" y="0.257576" />
+                            <point x="0.933333" y="0.5" />
+                            <point x="0.6" y="0.727273" />
+                            <point x="0.488889" y="0.969697" />
+                            <point x="0.177778" y="0.878788" />
+                            <point x="0.0666667" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+                <animation framecount="5" loop="0" name="Attack2" pingpong="0" repeatcount="1" repeatto="0" sid="926150092138748" speed="15">
+                    <frame duration="3" hotspotX="0.431818" hotspotY="0.987013" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-483897-free-knight-character-sprites-pixel-art\Knight_1\Attack 2.png">
+                        <collision-poly>
+                            <point x="0.477273" y="0.272727" />
+                            <point x="0.5" y="0.0909091" />
+                            <point x="0.704545" y="0.168831" />
+                            <point x="0.681818" y="0.493506" />
+                            <point x="0.522727" y="0.727273" />
+                            <point x="0.5" y="0.727273" />
+                            <point x="0.113636" y="0.935065" />
+                            <point x="0.204545" y="0.493506" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.444444" hotspotY="0.972603">
+                        <collision-poly>
+                            <point x="0.477273" y="0.272727" />
+                            <point x="0.5" y="0.0909091" />
+                            <point x="0.704545" y="0.168831" />
+                            <point x="0.681818" y="0.493506" />
+                            <point x="0.522727" y="0.727273" />
+                            <point x="0.5" y="0.727273" />
+                            <point x="0.113636" y="0.935065" />
+                            <point x="0.204545" y="0.493506" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="2" hotspotX="0.255556" hotspotY="0.971429">
+                        <collision-poly>
+                            <point x="0.199495" y="0.0584416" />
+                            <point x="0.466667" y="0.190909" />
+                            <point x="0.593434" y="0.325974" />
+                            <point x="0.581818" y="0.522078" />
+                            <point x="0.533838" y="0.898702" />
+                            <point x="0.388889" y="0.984416" />
+                            <point x="0.113636" y="0.935065" />
+                            <point x="0.0156566" y="0.536364" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="3" hotspotX="0.544118" hotspotY="0.969697">
+                        <collision-poly>
+                            <point x="0.374331" y="0.19697" />
+                            <point x="0.588235" y="0" />
+                            <point x="0.748663" y="0.017316" />
+                            <point x="0.975936" y="0.417749" />
+                            <point x="0.72861" y="0.984848" />
+                            <point x="0.455882" y="0.924242" />
+                            <point x="0.113636" y="0.935065" />
+                            <point x="0.204545" y="0.493506" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="2" hotspotX="0.425926" hotspotY="0.969697">
+                        <collision-poly>
+                            <point x="0.180976" y="0.181818" />
+                            <point x="0.5" y="0.0909091" />
+                            <point x="0.704545" y="0.168831" />
+                            <point x="0.681818" y="0.493506" />
+                            <point x="0.707912" y="1" />
+                            <point x="0.444444" y="0.848485" />
+                            <point x="0.113636" y="0.935065" />
+                            <point x="0" y="0.523809" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+                <animation framecount="6" loop="0" name="Attack3" pingpong="0" repeatcount="1" repeatto="0" sid="730307794217533" speed="11">
+                    <frame duration="1" hotspotX="0.32" hotspotY="0.984848" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-483897-free-knight-character-sprites-pixel-art\Knight_1\Attack 3.png">
+                        <collision-poly>
+                            <point x="0.22" y="0.166667" />
+                            <point x="0.5" y="0.0454545" />
+                            <point x="0.98" y="0.5" />
+                            <point x="0.62" y="0.712121" />
+                            <point x="0.5" y="0.984848" />
+                            <point x="0.04" y="0.969697" />
+                            <point x="0.32" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="2" hotspotX="0.372549" hotspotY="0.984848">
+                        <collision-poly>
+                            <point x="0.22" y="0.166667" />
+                            <point x="0.5" y="0.0454545" />
+                            <point x="0.98" y="0.5" />
+                            <point x="0.62" y="0.712121" />
+                            <point x="0.5" y="0.984848" />
+                            <point x="0.04" y="0.969697" />
+                            <point x="0.32" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.241379" hotspotY="0.96875">
+                        <collision-poly>
+                            <point x="0.22" y="0.166667" />
+                            <point x="0.5" y="0.0454545" />
+                            <point x="0.65816" y="0.484375" />
+                            <point x="0.62" y="0.712121" />
+                            <point x="0.5" y="0.984848" />
+                            <point x="0.04" y="0.969697" />
+                            <point x="0.32" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="4" hotspotX="0.182927" hotspotY="0.983607">
+                        <collision-poly>
+                            <point x="0.22" y="0.166667" />
+                            <point x="0.5" y="0.0454545" />
+                            <point x="0.577561" y="0.45082" />
+                            <point x="0.62" y="0.712121" />
+                            <point x="0.5" y="0.984848" />
+                            <point x="0.04" y="0.969697" />
+                            <point x="0.32" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.372549" hotspotY="0.984848">
+                        <collision-poly>
+                            <point x="0.22" y="0.166667" />
+                            <point x="0.5" y="0.0454545" />
+                            <point x="0.98" y="0.5" />
+                            <point x="0.62" y="0.712121" />
+                            <point x="0.5" y="0.984848" />
+                            <point x="0.04" y="0.969697" />
+                            <point x="0.32" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.32" hotspotY="0.984848">
+                        <collision-poly>
+                            <point x="0.22" y="0.166667" />
+                            <point x="0.5" y="0.0454545" />
+                            <point x="0.98" y="0.5" />
+                            <point x="0.62" y="0.712121" />
+                            <point x="0.5" y="0.984848" />
+                            <point x="0.04" y="0.969697" />
+                            <point x="1.49012e-008" y="0.378788" />
+                        </collision-poly>
+                    </frame>
+                </animation>
             </animation-folder>
         </object-type>
         <object-type name="TiledBackground13" sid="379018453473134">
             <plugin id="TiledBg" />
-            <texture original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\Free Pixel Art Forest\Free Pixel Art Forest\PNG\Background layers\Layer_0000_9.png" />
+            <effects>
+                <effect-type name="Brightness">
+                    <effect id="brightness" />
+                </effect-type>
+            </effects>
+            <texture original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\Beat&apos;em up DevVlog - Materiais\Nível Cidade\bg3.png" />
         </object-type>
         <object-type name="FileChooser" sid="942282783943695">
             <plugin id="filechooser" />
+        </object-type>
+        <object-type name="Function" sid="880874230504226">
+            <plugin id="Function" />
+        </object-type>
+        <object-type name="Heroi_hitbox" sid="948075933367386">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Pin" sid="102514552933154">
+                    <behavior id="Pin" />
+                </behavior-type>
+            </behaviors>
+            <effects>
+                <effect-type name="Brightness">
+                    <effect id="brightness" />
+                </effect-type>
+            </effects>
+            <animation-folder>
+                <animation framecount="6" loop="0" name="Attack1" pingpong="0" repeatcount="1" repeatto="0" sid="401689514902386" speed="16">
+                    <frame duration="3" hotspotX="0.511111" hotspotY="1" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-483897-free-knight-character-sprites-pixel-art\Knight_1\Attack 1.png">
+                        <collision-poly>
+                            <point x="0.533333" y="0" />
+                            <point x="0.488889" y="0.969697" />
+                            <point x="0.177778" y="0.878788" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="2" hotspotX="0.508197" hotspotY="1">
+                        <collision-poly>
+                            <point x="0.244444" y="0.166667" />
+                            <point x="0.488889" y="0.030303" />
+                            <point x="0.622222" y="0.257576" />
+                            <point x="0.933333" y="0.5" />
+                            <point x="0.6" y="0.727273" />
+                            <point x="0.488889" y="0.969697" />
+                            <point x="0.177778" y="0.878788" />
+                            <point x="0.0666667" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="1">
+                        <collision-poly>
+                            <point x="0.433838" y="0.393939" />
+                            <point x="0.488889" y="0.681818" />
+                            <point x="0.086869" y="0.545455" />
+                            <point x="0" y="0.113636" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.514286" hotspotY="1">
+                        <collision-poly>
+                            <point x="0" y="0.818182" />
+                            <point x="0.971429" y="0.530303" />
+                            <point x="0.949207" y="0.666667" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="3" hotspotX="0.218391" hotspotY="0.973684">
+                        <collision-poly>
+                            <point x="0" y="0.0877196" />
+                            <point x="0.488889" y="0.030303" />
+                            <point x="0.840613" y="0.0526316" />
+                            <point x="0.977011" y="0.473684" />
+                            <point x="0.887357" y="0.885168" />
+                            <point x="0.488889" y="0.969697" />
+                            <point x="0.69502" y="0.641946" />
+                            <point x="0.629885" y="0.421053" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.514286" hotspotY="1">
+                        <collision-poly>
+                            <point x="0.98889" y="0.64394" />
+                            <point x="0.0428571" y="0.818182" />
+                            <point x="0.809524" y="0.484848" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+                <animation framecount="5" loop="0" name="Attack2" pingpong="0" repeatcount="1" repeatto="0" sid="254254257411275" speed="15">
+                    <frame duration="3" hotspotX="0.431818" hotspotY="0.987013" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-483897-free-knight-character-sprites-pixel-art\Knight_1\Attack 2.png">
+                        <collision-poly>
+                            <point x="0.477273" y="0.272727" />
+                            <point x="0.5" y="0.0909091" />
+                            <point x="0.704545" y="0.168831" />
+                            <point x="0.681818" y="0.493506" />
+                            <point x="0.522727" y="0.727273" />
+                            <point x="0.5" y="0.727273" />
+                            <point x="0.113636" y="0.935065" />
+                            <point x="0.204545" y="0.493506" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.444444" hotspotY="0.972603">
+                        <collision-poly>
+                            <point x="1" y="0.350561" />
+                            <point x="0.835859" y="0.503558" />
+                            <point x="0.693434" y="0" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="2" hotspotX="0.255556" hotspotY="0.971429">
+                        <collision-poly>
+                            <point x="0.59899" y="0" />
+                            <point x="0.977778" y="0.0935065" />
+                            <point x="0.95606" y="0.655845" />
+                            <point x="0.666667" y="0.82013" />
+                            <point x="0.14697" y="0.706493" />
+                            <point x="0.39899" y="0.272078" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="3" hotspotX="0.544118" hotspotY="0.969697">
+                        <collision-poly>
+                            <point x="0.300802" y="0.719697" />
+                            <point x="0.691176" y="0.712121" />
+                            <point x="0.903075" y="0.00216448" />
+                            <point x="1" y="0.417749" />
+                            <point x="0.919786" y="0.886363" />
+                            <point x="0.455882" y="0.924242" />
+                            <point x="0.209224" y="0.874459" />
+                            <point x="0.0354273" y="0.523809" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="2" hotspotX="0.425926" hotspotY="0.969697">
+                        <collision-poly>
+                            <point x="0.180976" y="0.181818" />
+                            <point x="0.5" y="0.0909091" />
+                            <point x="0.704545" y="0.168831" />
+                            <point x="0.681818" y="0.493506" />
+                            <point x="0.707912" y="1" />
+                            <point x="0.444444" y="0.848485" />
+                            <point x="0.113636" y="0.935065" />
+                            <point x="0" y="0.523809" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+                <animation framecount="6" loop="0" name="Attack3" pingpong="0" repeatcount="1" repeatto="0" sid="437838836139338" speed="11">
+                    <frame duration="1" hotspotX="0.32" hotspotY="0.984848" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-483897-free-knight-character-sprites-pixel-art\Knight_1\Attack 3.png">
+                        <collision-poly>
+                            <point x="0.22" y="0.166667" />
+                            <point x="0.5" y="0.0454545" />
+                            <point x="0.98" y="0.5" />
+                            <point x="0.62" y="0.712121" />
+                            <point x="0.5" y="0.984848" />
+                            <point x="0.04" y="0.969697" />
+                            <point x="0.32" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="2" hotspotX="0.372549" hotspotY="0.984848">
+                        <collision-poly>
+                            <point x="0.137255" y="0.234848" />
+                            <point x="0.98" y="0.477273" />
+                            <point x="0.629804" y="0.568182" />
+                            <point x="0.31451" y="0.409091" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.241379" hotspotY="0.96875">
+                        <collision-poly>
+                            <point x="0.702759" y="0.307292" />
+                            <point x="1" y="0.469934" />
+                            <point x="0.816092" y="0.641098" />
+                            <point x="0.626207" y="0.618134" />
+                            <point x="0.544138" y="0.476563" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="4" hotspotX="0.182927" hotspotY="0.983607">
+                        <collision-poly>
+                            <point x="0.561463" y="0.461749" />
+                            <point x="0.731707" y="0.438897" />
+                            <point x="1" y="0.704918" />
+                            <point x="0.62" y="0.712121" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.372549" hotspotY="0.984848">
+                        <collision-poly>
+                            <point x="0.22" y="0.166667" />
+                            <point x="0.5" y="0.0454545" />
+                            <point x="0.98" y="0.5" />
+                            <point x="0.62" y="0.712121" />
+                            <point x="0.5" y="0.984848" />
+                            <point x="0.04" y="0.969697" />
+                            <point x="0.32" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.32" hotspotY="0.984848">
+                        <collision-poly>
+                            <point x="0.22" y="0.166667" />
+                            <point x="0.5" y="0.0454545" />
+                            <point x="0.98" y="0.5" />
+                            <point x="0.62" y="0.712121" />
+                            <point x="0.5" y="0.984848" />
+                            <point x="0.04" y="0.969697" />
+                            <point x="1.49012e-008" y="0.378788" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type global="1" name="ataquesHeroi" sid="627688087715267">
+            <plugin id="Arr" />
         </object-type>
     </object-folder>
     <families />
@@ -310,6 +756,7 @@
             </properties>
         </global-instance>
         <global-instance type="Browser" uid="7" />
+        <global-instance type="Function" uid="19" />
     </global-instances>
     <sounds-folder />
     <music-folder>
