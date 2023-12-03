@@ -316,7 +316,7 @@
                     </frame>
                     <frame duration="1" hotspotX="0.5" hotspotY="1" />
                 </animation>
-                <animation framecount="6" loop="0" name="Attack1" pingpong="0" repeatcount="1" repeatto="0" sid="424093361547076" speed="16">
+                <animation framecount="6" loop="0" name="Attack1" pingpong="0" repeatcount="1" repeatto="0" sid="424093361547076" speed="20">
                     <frame duration="3" hotspotX="0.511111" hotspotY="1" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-483897-free-knight-character-sprites-pixel-art\Knight_1\Attack 1.png">
                         <collision-poly>
                             <point x="0.244444" y="0.166667" />
@@ -390,7 +390,7 @@
                         </collision-poly>
                     </frame>
                 </animation>
-                <animation framecount="6" loop="0" name="Attack2" pingpong="0" repeatcount="1" repeatto="0" sid="926150092138748" speed="15">
+                <animation framecount="6" loop="0" name="Attack2" pingpong="0" repeatcount="1" repeatto="0" sid="926150092138748" speed="18">
                     <frame duration="3" hotspotX="0.511111" hotspotY="1" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-483897-free-knight-character-sprites-pixel-art\Knight_1\Attack 2.png">
                         <collision-poly>
                             <point x="0.477273" y="0.318182" />
@@ -464,7 +464,7 @@
                         </collision-poly>
                     </frame>
                 </animation>
-                <animation framecount="6" loop="0" name="Attack3" pingpong="0" repeatcount="1" repeatto="0" sid="730307794217533" speed="11">
+                <animation framecount="6" loop="0" name="Attack3" pingpong="0" repeatcount="1" repeatto="0" sid="730307794217533" speed="15">
                     <frame duration="1" hotspotX="0.32" hotspotY="0.984848" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-483897-free-knight-character-sprites-pixel-art\Knight_1\Attack 3.png">
                         <collision-poly>
                             <point x="0.22" y="0.166667" />

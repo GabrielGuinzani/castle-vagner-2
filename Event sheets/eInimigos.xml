@@ -661,12 +661,12 @@
                         </condition>
                     </conditions>
                     <actions>
+                        <action id="-16" name="Wait" sid="606901868969648" type="System">
+                            <param id="0" name="Seconds">2</param>
+                        </action>
                         <action id="4" name="Set animation" sid="698801703197920" type="lordFarier">
                             <param id="0" name="Animation">&quot;Idle&quot;</param>
                             <param id="1" name="From">1</param>
-                        </action>
-                        <action id="-16" name="Wait" sid="606901868969648" type="System">
-                            <param id="0" name="Seconds">2</param>
                         </action>
                     </actions>
                 </event-block>
