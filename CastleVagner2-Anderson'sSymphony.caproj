@@ -15,15 +15,19 @@
         <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
+        <plugin author="Juan Pablo Tarquino" id="Rex_ZSorter" version="1">Z Sorter</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
         <plugin author="Scirra" id="filechooser" version="1">File chooser</plugin>
         <plugin author="Scirra" id="gamepad" version="1">Gamepad</plugin>
     </used-plugins>
     <used-behaviors>
+        <behavior author="Scirra" id="Anchor" version="1">Anchor</behavior>
         <behavior author="Scirra" id="EightDir" version="1">8 Direction</behavior>
         <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
         <behavior author="Scirra" id="Platform" version="1">Platform</behavior>
+        <behavior author="Rex.Rainbow" id="Rex_MoveTo" version="1">MoveTo</behavior>
+        <behavior author="Scirra" id="Sin" version="1">Sine</behavior>
         <behavior author="Scirra" id="bound" version="1">Bound to layout</behavior>
     </used-behaviors>
     <used-effects>
@@ -112,14 +116,6 @@
             <plugin id="TiledBg" />
             <texture original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\Free Pixel Art Forest\Free Pixel Art Forest\PNG\Background layers\Layer_0000_9.png" />
         </object-type>
-        <object-type name="Sprite" sid="706019637299607">
-            <plugin id="Sprite" />
-            <animation-folder>
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="301793378663393" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
-                </animation>
-            </animation-folder>
-        </object-type>
         <object-type name="Heroi" sid="576406511849186">
             <plugin id="Sprite" />
             <instance-variables>
@@ -131,6 +127,10 @@
                 <instance-variable name="combo" sid="847515955689234" type="number" />
                 <instance-variable name="combo_maximo" sid="935698267792283" type="number" />
                 <instance-variable name="combo_timer" sid="765329558709299" type="number" />
+                <instance-variable name="defendendo" sid="862561111775357" type="boolean" />
+                <instance-variable name="acerto" sid="889198617726474" type="number" />
+                <instance-variable name="vida" sid="907553680571367" type="number" />
+                <instance-variable name="mana" sid="774583635480854" type="number" />
             </instance-variables>
             <behaviors>
                 <behavior-type name="8Direction" sid="791665349785325">
@@ -295,13 +295,13 @@
                     <frame duration="1" hotspotX="0.509804" hotspotY="1" />
                     <frame duration="200" hotspotX="0.5" hotspotY="1" />
                 </animation>
-                <animation framecount="6" loop="0" name="Dead" pingpong="0" repeatcount="1" repeatto="0" sid="217184687016274" speed="5">
+                <animation framecount="6" loop="0" name="Dead" pingpong="0" repeatcount="1" repeatto="0" sid="217184687016274" speed="2">
                     <frame duration="1" hotspotX="0.511111" hotspotY="1" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-483897-free-knight-character-sprites-pixel-art\Knight_1\Dead.png" />
                     <frame duration="1" hotspotX="0.510204" hotspotY="1" />
                     <frame duration="1" hotspotX="0.510638" hotspotY="1" />
                     <frame duration="1" hotspotX="0.5" hotspotY="1" />
                     <frame duration="1" hotspotX="0.5" hotspotY="1" />
-                    <frame duration="1" hotspotX="0.5" hotspotY="1" />
+                    <frame duration="999" hotspotX="0.5" hotspotY="1" />
                 </animation>
                 <animation framecount="2" loop="0" name="Hurt" pingpong="0" repeatcount="1" repeatto="0" sid="704041468054540" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="1" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-483897-free-knight-character-sprites-pixel-art\Knight_1\Hurt.png">
@@ -377,7 +377,7 @@
                             <point x="0.0666667" y="0.5" />
                         </collision-poly>
                     </frame>
-                    <frame duration="1" hotspotX="0.514286" hotspotY="1">
+                    <frame duration="3" hotspotX="0.514286" hotspotY="1">
                         <collision-poly>
                             <point x="0.244444" y="0.166667" />
                             <point x="0.488889" y="0.030303" />
@@ -390,8 +390,20 @@
                         </collision-poly>
                     </frame>
                 </animation>
-                <animation framecount="5" loop="0" name="Attack2" pingpong="0" repeatcount="1" repeatto="0" sid="926150092138748" speed="15">
-                    <frame duration="3" hotspotX="0.431818" hotspotY="0.987013" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-483897-free-knight-character-sprites-pixel-art\Knight_1\Attack 2.png">
+                <animation framecount="6" loop="0" name="Attack2" pingpong="0" repeatcount="1" repeatto="0" sid="926150092138748" speed="15">
+                    <frame duration="3" hotspotX="0.511111" hotspotY="1" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-483897-free-knight-character-sprites-pixel-art\Knight_1\Attack 2.png">
+                        <collision-poly>
+                            <point x="0.477273" y="0.318182" />
+                            <point x="0.5" y="0.106061" />
+                            <point x="0.704545" y="0.19697" />
+                            <point x="0.681818" y="0.575757" />
+                            <point x="0.522727" y="0.848485" />
+                            <point x="0.5" y="0.848485" />
+                            <point x="0.113636" y="1" />
+                            <point x="0.204545" y="0.575757" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="1">
                         <collision-poly>
                             <point x="0.477273" y="0.272727" />
                             <point x="0.5" y="0.0909091" />
@@ -439,7 +451,7 @@
                             <point x="0.204545" y="0.493506" />
                         </collision-poly>
                     </frame>
-                    <frame duration="2" hotspotX="0.425926" hotspotY="0.969697">
+                    <frame duration="3" hotspotX="0.425926" hotspotY="0.969697">
                         <collision-poly>
                             <point x="0.180976" y="0.181818" />
                             <point x="0.5" y="0.0909091" />
@@ -520,6 +532,24 @@
                         </collision-poly>
                     </frame>
                 </animation>
+                <animation framecount="5" loop="0" name="Defend" pingpong="0" repeatcount="1" repeatto="0" sid="870677029129941" speed="5">
+                    <frame duration="1" hotspotX="0.511111" hotspotY="1" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-483897-free-knight-character-sprites-pixel-art\Knight_1\Defend.png">
+                        <collision-poly>
+                            <point x="0.622222" y="0.354839" />
+                            <point x="1" y="0.145161" />
+                            <point x="1" y="0.306452" />
+                            <point x="1" y="0.403226" />
+                            <point x="1" y="0.66129" />
+                            <point x="1" y="0.854839" />
+                            <point x="0.4" y="0.612903" />
+                            <point x="0.555556" y="0.403226" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.511111" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.511111" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.511111" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.511111" hotspotY="1" />
+                </animation>
             </animation-folder>
         </object-type>
         <object-type name="TiledBackground13" sid="379018453473134">
@@ -553,26 +583,21 @@
                 <animation framecount="6" loop="0" name="Attack1" pingpong="0" repeatcount="1" repeatto="0" sid="401689514902386" speed="16">
                     <frame duration="3" hotspotX="0.511111" hotspotY="1" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-483897-free-knight-character-sprites-pixel-art\Knight_1\Attack 1.png">
                         <collision-poly>
-                            <point x="0.533333" y="0" />
-                            <point x="0.488889" y="0.969697" />
-                            <point x="0.177778" y="0.878788" />
+                            <point x="0.233333" y="0.515152" />
+                            <point x="0.833334" y="0.772728" />
+                            <point x="0.2" y="0.628788" />
                         </collision-poly>
                     </frame>
                     <frame duration="2" hotspotX="0.508197" hotspotY="1">
                         <collision-poly>
-                            <point x="0.244444" y="0.166667" />
-                            <point x="0.488889" y="0.030303" />
-                            <point x="0.622222" y="0.257576" />
-                            <point x="0.933333" y="0.5" />
-                            <point x="0.6" y="0.727273" />
-                            <point x="0.488889" y="0.969697" />
-                            <point x="0.177778" y="0.878788" />
-                            <point x="0.0666667" y="0.5" />
+                            <point x="0.236247" y="0.0909094" />
+                            <point x="0.144627" y="0.333333" />
+                            <point x="0.0666667" y="0.265151" />
                         </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.5" hotspotY="1">
                         <collision-poly>
-                            <point x="0.433838" y="0.393939" />
+                            <point x="0.365656" y="0.378787" />
                             <point x="0.488889" y="0.681818" />
                             <point x="0.086869" y="0.545455" />
                             <point x="0" y="0.113636" />
@@ -608,14 +633,9 @@
                 <animation framecount="5" loop="0" name="Attack2" pingpong="0" repeatcount="1" repeatto="0" sid="254254257411275" speed="15">
                     <frame duration="3" hotspotX="0.431818" hotspotY="0.987013" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-483897-free-knight-character-sprites-pixel-art\Knight_1\Attack 2.png">
                         <collision-poly>
-                            <point x="0.477273" y="0.272727" />
-                            <point x="0.5" y="0.0909091" />
-                            <point x="0.704545" y="0.168831" />
-                            <point x="0.681818" y="0.493506" />
-                            <point x="0.522727" y="0.727273" />
-                            <point x="0.5" y="0.727273" />
-                            <point x="0.113636" y="0.935065" />
-                            <point x="0.204545" y="0.493506" />
+                            <point x="0.784091" y="0.305195" />
+                            <point x="0.352273" y="0" />
+                            <point x="0.886363" y="0.253246" />
                         </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.444444" hotspotY="0.972603">
@@ -649,12 +669,7 @@
                     </frame>
                     <frame duration="2" hotspotX="0.425926" hotspotY="0.969697">
                         <collision-poly>
-                            <point x="0.180976" y="0.181818" />
-                            <point x="0.5" y="0.0909091" />
-                            <point x="0.704545" y="0.168831" />
-                            <point x="0.681818" y="0.493506" />
-                            <point x="0.707912" y="1" />
-                            <point x="0.444444" y="0.848485" />
+                            <point x="0.185185" y="0.568182" />
                             <point x="0.113636" y="0.935065" />
                             <point x="0" y="0.523809" />
                         </collision-poly>
@@ -663,12 +678,8 @@
                 <animation framecount="6" loop="0" name="Attack3" pingpong="0" repeatcount="1" repeatto="0" sid="437838836139338" speed="11">
                     <frame duration="1" hotspotX="0.32" hotspotY="0.984848" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-483897-free-knight-character-sprites-pixel-art\Knight_1\Attack 3.png">
                         <collision-poly>
-                            <point x="0.22" y="0.166667" />
-                            <point x="0.5" y="0.0454545" />
-                            <point x="0.98" y="0.5" />
-                            <point x="0.62" y="0.712121" />
-                            <point x="0.5" y="0.984848" />
-                            <point x="0.04" y="0.969697" />
+                            <point x="0.36" y="0.409091" />
+                            <point x="0.77" y="0.583333" />
                             <point x="0.32" y="0.5" />
                         </collision-poly>
                     </frame>
@@ -683,7 +694,7 @@
                     <frame duration="1" hotspotX="0.241379" hotspotY="0.96875">
                         <collision-poly>
                             <point x="0.702759" y="0.307292" />
-                            <point x="1" y="0.469934" />
+                            <point x="1" y="0.462121" />
                             <point x="0.816092" y="0.641098" />
                             <point x="0.626207" y="0.618134" />
                             <point x="0.544138" y="0.476563" />
@@ -699,30 +710,298 @@
                     </frame>
                     <frame duration="1" hotspotX="0.372549" hotspotY="0.984848">
                         <collision-poly>
-                            <point x="0.22" y="0.166667" />
-                            <point x="0.5" y="0.0454545" />
+                            <point x="0.26902" y="0.25" />
                             <point x="0.98" y="0.5" />
-                            <point x="0.62" y="0.712121" />
-                            <point x="0.5" y="0.984848" />
-                            <point x="0.04" y="0.969697" />
-                            <point x="0.32" y="0.5" />
+                            <point x="0.212157" y="0.409091" />
                         </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.32" hotspotY="0.984848">
                         <collision-poly>
-                            <point x="0.22" y="0.166667" />
-                            <point x="0.5" y="0.0454545" />
-                            <point x="0.98" y="0.5" />
-                            <point x="0.62" y="0.712121" />
-                            <point x="0.5" y="0.984848" />
-                            <point x="0.04" y="0.969697" />
-                            <point x="1.49012e-008" y="0.378788" />
+                            <point x="0.36" y="0.356061" />
+                            <point x="0.78" y="0.598485" />
+                            <point x="0.25" y="0.507576" />
                         </collision-poly>
                     </frame>
                 </animation>
             </animation-folder>
         </object-type>
         <object-type global="1" name="ataquesHeroi" sid="627688087715267">
+            <plugin id="Arr" />
+        </object-type>
+        <object-type name="esqueletoLanca" sid="109983330668812">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Sine" sid="316916529030852">
+                    <behavior id="Sin" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Idle" pingpong="0" repeatcount="1" repeatto="0" sid="120072184739408" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="1" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-345355-free-skeleton-pixel-art-sprite-sheets\Skeleton_Spearman\Idle.png">
+                        <collision-poly>
+                            <point x="0.46875" y="0.22619" />
+                            <point x="1" y="0.452381" />
+                            <point x="1" y="0.440476" />
+                            <point x="1" y="0.428571" />
+                            <point x="1" y="0.261905" />
+                            <point x="1" y="1" />
+                            <point x="0.4375" y="0.642857" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+                <animation framecount="1" loop="0" name="Walk" pingpong="0" repeatcount="1" repeatto="0" sid="987994851964299" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type global="1" name="ZSorter" sid="663030919581034">
+            <plugin id="Rex_ZSorter" />
+        </object-type>
+        <object-type name="vidaFundo" sid="665341486756873">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Anchor" sid="866329806712423">
+                    <behavior id="Anchor" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="928055948805881" speed="5">
+                    <frame duration="1" hotspotX="0" hotspotY="0.5" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\Beat&apos;em up DevVlog - Materiais\HUD\BarraVida.png" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="manaFundo" sid="827325980972181">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Anchor" sid="832862136451341">
+                    <behavior id="Anchor" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="724835798260935" speed="5">
+                    <frame duration="1" hotspotX="0" hotspotY="0.5" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\Beat&apos;em up DevVlog - Materiais\HUD\BarraPoder.png" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="healthBar" sid="955156807145123">
+            <plugin id="TiledBg" />
+            <behaviors>
+                <behavior-type name="Anchor" sid="878574095097294">
+                    <behavior id="Anchor" />
+                </behavior-type>
+            </behaviors>
+            <texture original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\Beat&apos;em up DevVlog - Materiais\HUD\BarraVidaConteudo.png" />
+        </object-type>
+        <object-type name="healthBarBehind" sid="836192114756884">
+            <plugin id="TiledBg" />
+            <texture original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\Beat&apos;em up DevVlog - Materiais\HUD\BarraVidaAtras.png" />
+        </object-type>
+        <object-type name="manaBar" sid="651207376749232">
+            <plugin id="TiledBg" />
+            <behaviors>
+                <behavior-type name="Anchor" sid="435977595100324">
+                    <behavior id="Anchor" />
+                </behavior-type>
+            </behaviors>
+            <texture original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\Beat&apos;em up DevVlog - Materiais\HUD\BarraPoderConteudo.png" />
+        </object-type>
+        <object-type name="manaBarBehind" sid="971615122235582">
+            <plugin id="TiledBg" />
+            <texture original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\Beat&apos;em up DevVlog - Materiais\HUD\BarraPoderAtras.png" />
+        </object-type>
+        <object-type name="lordFarier" sid="480911323430845">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="ativo" sid="295149895954856" type="boolean" />
+                <instance-variable name="decisao" sid="724575602190842" type="number" />
+                <instance-variable name="decisao_atual" sid="103432206671141" type="number" />
+                <instance-variable name="decisao_timer" sid="305916488454867" type="number" />
+                <instance-variable name="combo" sid="376559950345029" type="number" />
+                <instance-variable name="combo_max" sid="885925620265161" type="number" />
+                <instance-variable name="vida" sid="949651940175343" type="number" />
+                <instance-variable name="dead" sid="558311163618511" type="boolean" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="Sine" sid="243007085592414">
+                    <behavior id="Sin" />
+                </behavior-type>
+                <behavior-type name="MoveTo" sid="963362270203147">
+                    <behavior id="Rex_MoveTo" />
+                </behavior-type>
+                <behavior-type name="BoundToLayout" sid="937717883778926">
+                    <behavior id="bound" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="10" loop="1" name="Idle" pingpong="0" repeatcount="1" repeatto="0" sid="334214352072554" speed="5">
+                    <frame duration="1" hotspotX="0.472222" hotspotY="0.985294" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-431295-free-wizard-sprite-sheets-pixel-art\Wanderer Magican\Idle.png">
+                        <collision-poly>
+                            <point x="1" y="0" />
+                            <point x="1" y="0" />
+                            <point x="1" y="0" />
+                            <point x="1" y="0.0441176" />
+                            <point x="1" y="0.765686" />
+                            <point x="1" y="0.953922" />
+                            <point x="0" y="0.953922" />
+                            <point x="1" y="0.0441176" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="2" hotspotX="0.547619" hotspotY="0.985075" />
+                    <frame duration="2" hotspotX="0.595745" hotspotY="0.985075" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-431295-free-wizard-sprite-sheets-pixel-art\Wanderer Magican\Idle.png" />
+                    <frame duration="1" hotspotX="0.612245" hotspotY="0.985294" />
+                    <frame duration="1" hotspotX="0.648148" hotspotY="0.985294" />
+                    <frame duration="1" hotspotX="0.586957" hotspotY="0.985294" />
+                    <frame duration="1" hotspotX="0.648148" hotspotY="0.985294" />
+                    <frame duration="1" hotspotX="0.595745" hotspotY="0.985075" />
+                    <frame duration="1" hotspotX="0.547619" hotspotY="0.985075" />
+                    <frame duration="1" hotspotX="0.486486" hotspotY="0.985294" />
+                </animation>
+                <animation framecount="7" loop="0" name="Walk" pingpong="0" repeatcount="1" repeatto="0" sid="172605175097462" speed="5">
+                    <frame duration="1" hotspotX="0.515152" hotspotY="1" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-431295-free-wizard-sprite-sheets-pixel-art\Wanderer Magican\Walk.png">
+                        <collision-poly>
+                            <point x="1" y="0" />
+                            <point x="1" y="0" />
+                            <point x="1" y="0" />
+                            <point x="1" y="0" />
+                            <point x="1" y="0.957199" />
+                            <point x="1" y="0" />
+                            <point x="1" y="0" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.510638" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.511111" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.513514" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.516129" hotspotY="1" />
+                </animation>
+                <animation framecount="4" loop="1" name="Hitstun" pingpong="0" repeatcount="1" repeatto="0" sid="108906791556555" speed="10">
+                    <frame duration="1" hotspotX="0.5" hotspotY="1" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-431295-free-wizard-sprite-sheets-pixel-art\Wanderer Magican\Hurt.png" />
+                    <frame duration="1" hotspotX="0.512195" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="1" />
+                    <frame duration="10" hotspotX="0.5" hotspotY="1" />
+                </animation>
+                <animation framecount="7" loop="0" name="Attack1" pingpong="0" repeatcount="1" repeatto="0" sid="398201567555363" speed="4">
+                    <frame duration="1" hotspotX="0.651163" hotspotY="0.984848" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-431295-free-wizard-sprite-sheets-pixel-art\Wanderer Magican\Attack_1.png">
+                        <collision-poly>
+                            <point x="1" y="0" />
+                            <point x="1" y="0.121212" />
+                            <point x="1" y="0.0151515" />
+                            <point x="1" y="0.242424" />
+                            <point x="1" y="0.984848" />
+                            <point x="0.0465116" y="0.5" />
+                            <point x="0.186047" y="0.0151515" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.675" hotspotY="0.984615" />
+                    <frame duration="1" hotspotX="0.457143" hotspotY="0.985294" />
+                    <frame duration="1" hotspotX="0.430233" hotspotY="0.988235" />
+                    <frame duration="1" hotspotX="0.417582" hotspotY="0.988764" />
+                    <frame duration="1" hotspotX="0.37" hotspotY="0.990099" />
+                    <frame duration="1" hotspotX="0.444444" hotspotY="0.985294" />
+                </animation>
+                <animation framecount="10" loop="0" name="Attack2" pingpong="0" repeatcount="1" repeatto="0" sid="607694190946060" speed="5">
+                    <frame duration="1" hotspotX="0.725" hotspotY="0.984848" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-431295-free-wizard-sprite-sheets-pixel-art\Wanderer Magican\Attack_2.png">
+                        <collision-poly>
+                            <point x="1" y="0.242424" />
+                            <point x="1" y="0.121212" />
+                            <point x="1" y="0.0151515" />
+                            <point x="1" y="0.363636" />
+                            <point x="1" y="0.984848" />
+                            <point x="0.05" y="0.515152" />
+                            <point x="0.225" y="0.0151515" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.761905" hotspotY="0.984615" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-345355-free-skeleton-pixel-art-sprite-sheets\Skeleton_Warrior\Attack_2.png" />
+                    <frame duration="1" hotspotX="0.630435" hotspotY="0.984615" />
+                    <frame duration="1" hotspotX="0.491228" hotspotY="0.985294" />
+                    <frame duration="1" hotspotX="0.442623" hotspotY="0.985294" />
+                    <frame duration="1" hotspotX="0.477612" hotspotY="0.985294" />
+                    <frame duration="1" hotspotX="0.393617" hotspotY="0.985294" />
+                    <frame duration="1" hotspotX="0.558824" hotspotY="0.986667" />
+                    <frame duration="1" hotspotX="0.516129" hotspotY="0.986667" />
+                    <frame duration="1" hotspotX="0.516129" hotspotY="0.986667" />
+                </animation>
+                <animation framecount="4" loop="0" name="Dead" pingpong="0" repeatcount="1" repeatto="0" sid="641183510586435" speed="5">
+                    <frame duration="2" hotspotX="0.512195" hotspotY="1" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-431295-free-wizard-sprite-sheets-pixel-art\Wanderer Magican\Dead.png">
+                        <collision-poly>
+                            <point x="1" y="0" />
+                            <point x="1" y="0" />
+                            <point x="1" y="0" />
+                            <point x="1" y="0" />
+                            <point x="1" y="0" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="3" hotspotX="0.5" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="1" />
+                    <frame duration="9" hotspotX="0.5" hotspotY="1" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="esqueletoArqueiro" sid="104750324691654">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Idle" pingpong="0" repeatcount="1" repeatto="0" sid="776210118910392" speed="5">
+                    <frame duration="1" hotspotX="0.512821" hotspotY="1" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-345355-free-skeleton-pixel-art-sprite-sheets\Skeleton_Archer\Idle.png">
+                        <collision-poly>
+                            <point x="0.923077" y="0.257576" />
+                            <point x="1" y="0.242424" />
+                            <point x="1" y="0.0606061" />
+                            <point x="1" y="0.0151515" />
+                            <point x="1" y="0.287879" />
+                            <point x="1" y="0.984848" />
+                            <point x="0.128205" y="0.242424" />
+                            <point x="0.230769" y="0.0151515" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="magoFogo" sid="193741457294910">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Idle" pingpong="0" repeatcount="1" repeatto="0" sid="833006807742057" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="1" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-431295-free-wizard-sprite-sheets-pixel-art\Fire vizard\Idle.png">
+                        <collision-poly>
+                            <point x="1" y="0.235294" />
+                            <point x="1" y="0.147059" />
+                            <point x="1" y="0.0441176" />
+                            <point x="1" y="0.294118" />
+                            <point x="0.133333" y="0.411765" />
+                            <point x="0.3" y="0.0441176" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="magoTrovão" sid="989744423225522">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="868275588886743" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Sprite" sid="995894938667429">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="296078885623328" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="magoRaio" sid="809386860737715">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Idle" pingpong="0" repeatcount="1" repeatto="0" sid="662798092399986" speed="5">
+                    <frame duration="1" hotspotX="0.52" hotspotY="1" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-431295-free-wizard-sprite-sheets-pixel-art\Lightning Mage\Idle.png" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type global="1" name="Array" sid="383475659108401">
+            <plugin id="Arr" />
+        </object-type>
+        <object-type global="1" name="ataquesInimigos" sid="198227288579324">
             <plugin id="Arr" />
         </object-type>
     </object-folder>
@@ -733,6 +1012,7 @@
     <event-folder>
         <event-sheet>ePrincipal.xml</event-sheet>
         <event-sheet>ePersonagem.xml</event-sheet>
+        <event-sheet>eInimigos.xml</event-sheet>
     </event-folder>
     <global-instances>
         <global-instance type="Gamepad" uid="2">
@@ -762,6 +1042,8 @@
     <music-folder>
         <file name="soundtrack.m4a" />
         <file name="soundtrack.ogg" />
+        <file name="lordfariersymphony.m4a" />
+        <file name="lordfariersymphony.ogg" />
     </music-folder>
     <files-folder>
         <file-folder name="Icons">

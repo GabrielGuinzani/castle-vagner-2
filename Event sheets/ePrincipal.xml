@@ -3,19 +3,20 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>ePrincipal</name>
     <events>
-        <include>ePersonagem</include>
         <event-block sid="607726091112446">
             <conditions>
                 <condition id="-2" name="On start of layout" sid="663898186606271" type="System" />
             </conditions>
             <actions>
-                <action id="0" name="Play" sid="149494973923244" type="Audio">
-                    <param id="0" name="Audio file">soundtrack</param>
+                <action id="0" name="Play" sid="492027371573211" type="Audio">
+                    <param id="0" name="Audio file">lordfariersymphony</param>
                     <param id="2" name="Loop">1</param>
                     <param id="3" name="Volume">0</param>
                     <param id="1" name="Tag (optional)">&quot;&quot;</param>
                 </action>
             </actions>
         </event-block>
+        <include>ePersonagem</include>
+        <include>eInimigos</include>
     </events>
 </c2eventsheet>

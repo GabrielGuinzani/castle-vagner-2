@@ -10,9 +10,10 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <display name="HTML5" />
     </configurations>
     <open-tabs>
-        <layout order="0">Fase</layout>
+        <layout active="1" order="0">Fase</layout>
+        <event-sheet order="1">ePersonagem</event-sheet>
         <event-sheet order="2">ePrincipal</event-sheet>
-        <event-sheet active="1" order="1">ePersonagem</event-sheet>
+        <event-sheet order="3">eInimigos</event-sheet>
     </open-tabs>
     <properties>
         <property expanded="1" name="About" />
@@ -29,8 +30,16 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <folder expanded="1" path="sound-folder/" />
         <folder expanded="1" path="music-folder/" />
         <folder expanded="0" path="file-folder/Icons/" />
-        <folder expanded="1" path="animation-folder/Sprite/" />
         <folder expanded="1" path="animation-folder/Heroi/" />
         <folder expanded="1" path="animation-folder/Heroi_hitbox/" />
+        <folder expanded="1" path="animation-folder/esqueletoLanca/" />
+        <folder expanded="1" path="animation-folder/vidaFundo/" />
+        <folder expanded="1" path="animation-folder/manaFundo/" />
+        <folder expanded="1" path="animation-folder/lordFarier/" />
+        <folder expanded="1" path="animation-folder/esqueletoArqueiro/" />
+        <folder expanded="1" path="animation-folder/magoFogo/" />
+        <folder expanded="1" path="animation-folder/magoTrovão/" />
+        <folder expanded="1" path="animation-folder/Sprite/" />
+        <folder expanded="1" path="animation-folder/magoRaio/" />
     </folders-expanded>
 </c2uistate>
