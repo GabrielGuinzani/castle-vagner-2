@@ -68,7 +68,10 @@
                         </action>
                         <action id="-12" name="Subtract from" sid="309136874738226" type="lordFarier">
                             <param id="0" name="Instance variable">vida</param>
-                            <param id="1" name="Value">15</param>
+                            <param id="1" name="Value">5</param>
+                        </action>
+                        <action id="-5" name="Set width" sid="560665862611725" type="healthBar2">
+                            <param id="0" name="Width">lordFarier.vida</param>
                         </action>
                     </actions>
                 </event-block>

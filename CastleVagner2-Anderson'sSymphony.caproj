@@ -17,6 +17,7 @@
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Juan Pablo Tarquino" id="Rex_ZSorter" version="1">Z Sorter</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
         <plugin author="Scirra" id="filechooser" version="1">File chooser</plugin>
         <plugin author="Scirra" id="gamepad" version="1">Gamepad</plugin>
@@ -24,6 +25,7 @@
     <used-behaviors>
         <behavior author="Scirra" id="Anchor" version="1">Anchor</behavior>
         <behavior author="Scirra" id="EightDir" version="1">8 Direction</behavior>
+        <behavior author="Scirra" id="Fade" version="1">Fade</behavior>
         <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
         <behavior author="Scirra" id="Platform" version="1">Platform</behavior>
         <behavior author="Rex.Rainbow" id="Rex_MoveTo" version="1">MoveTo</behavior>
@@ -42,6 +44,7 @@
     </window-size>
     <pixel-rounding>0</pixel-rounding>
     <preview-effects>1</preview-effects>
+    <first-layout>Texto</first-layout>
     <use-loader-layout>0</use-loader-layout>
     <configuration-settings>
         <prop name="Clear background">No</prop>
@@ -1350,15 +1353,74 @@
         <object-type global="1" name="ataquesInimigos" sid="198227288579324">
             <plugin id="Arr" />
         </object-type>
+        <object-type name="barraHpText" sid="107502630218109">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="nomeAnderson" sid="513029496192660">
+            <plugin id="Text" />
+            <behaviors>
+                <behavior-type name="Pin" sid="400166095110388">
+                    <behavior id="Pin" />
+                </behavior-type>
+            </behaviors>
+        </object-type>
+        <object-type name="healthBar2" sid="895086871222359">
+            <plugin id="TiledBg" />
+            <behaviors>
+                <behavior-type name="Anchor" sid="202858095887567">
+                    <behavior id="Anchor" />
+                </behavior-type>
+            </behaviors>
+            <texture original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\Beat&apos;em up DevVlog - Materiais\HUD\BarraVidaConteudo.png" />
+        </object-type>
+        <object-type name="healthBarBehind2" sid="713145430032365">
+            <plugin id="TiledBg" />
+            <texture original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\Beat&apos;em up DevVlog - Materiais\HUD\BarraVidaAtras.png" />
+        </object-type>
+        <object-type name="vidaFundo2" sid="843673479279550">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Anchor" sid="602261268955996">
+                    <behavior id="Anchor" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="160854622314938" speed="5">
+                    <frame duration="1" hotspotX="0" hotspotY="0.5" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\Beat&apos;em up DevVlog - Materiais\HUD\BarraVida.png" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="TiledBackground14" sid="387830625114128">
+            <plugin id="TiledBg" />
+            <texture />
+        </object-type>
+        <object-type name="Text" sid="710897151711423">
+            <plugin id="Text" />
+            <behaviors>
+                <behavior-type name="Fade" sid="406185381692841">
+                    <behavior id="Fade" />
+                </behavior-type>
+            </behaviors>
+        </object-type>
+        <object-type name="Text2" sid="773444264693220">
+            <plugin id="Text" />
+            <behaviors>
+                <behavior-type name="Fade" sid="370743304064911">
+                    <behavior id="Fade" />
+                </behavior-type>
+            </behaviors>
+        </object-type>
     </object-folder>
     <families />
     <layout-folder>
         <layout>Fase.xml</layout>
+        <layout>Texto.xml</layout>
     </layout-folder>
     <event-folder>
         <event-sheet>ePrincipal.xml</event-sheet>
         <event-sheet>ePersonagem.xml</event-sheet>
         <event-sheet>eInimigos.xml</event-sheet>
+        <event-sheet>eTexto.xml</event-sheet>
     </event-folder>
     <global-instances>
         <global-instance type="Gamepad" uid="2">

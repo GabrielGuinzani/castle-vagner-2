@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>eTexto</name>
+    <events>
+        <event-block sid="457367202312927">
+            <conditions>
+                <condition behavior="Fade" id="2" name="On wait finished" sid="868081553006161" type="Text" />
+            </conditions>
+            <actions>
+                <action id="-3" name="Set position" sid="395088160035746" type="Text2">
+                    <param id="0" name="X">57</param>
+                    <param id="1" name="Y">75</param>
+                </action>
+                <action behavior="Fade" id="1" name="Start fade" sid="982782036995256" type="Text2" />
+            </actions>
+        </event-block>
+        <event-block sid="167825589625482">
+            <conditions>
+                <condition id="-19" name="On destroyed" sid="740490238569174" type="Text2" />
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="635647595394276" type="System">
+                    <param id="0" name="Layout">Fase</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
