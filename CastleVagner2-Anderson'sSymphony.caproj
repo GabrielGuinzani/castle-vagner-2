@@ -946,7 +946,7 @@
                             <point x="0.0277778" y="0.5" />
                         </collision-poly>
                     </frame>
-                    <frame duration="50" hotspotX="0.486486" hotspotY="0.985294">
+                    <frame duration="1" hotspotX="0.486486" hotspotY="0.985294">
                         <collision-poly>
                             <point x="0.111111" y="0.0588235" />
                             <point x="0.5" y="0.0735294" />
