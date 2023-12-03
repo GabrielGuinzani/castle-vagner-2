@@ -131,6 +131,8 @@
                 <instance-variable name="acerto" sid="889198617726474" type="number" />
                 <instance-variable name="vida" sid="907553680571367" type="number" />
                 <instance-variable name="mana" sid="774583635480854" type="number" />
+                <instance-variable name="stun" sid="961783680364807" type="number" />
+                <instance-variable name="stun_max" sid="395571113450325" type="number" />
             </instance-variables>
             <behaviors>
                 <behavior-type name="8Direction" sid="791665349785325">
@@ -303,7 +305,7 @@
                     <frame duration="1" hotspotX="0.5" hotspotY="1" />
                     <frame duration="999" hotspotX="0.5" hotspotY="1" />
                 </animation>
-                <animation framecount="2" loop="0" name="Hurt" pingpong="0" repeatcount="1" repeatto="0" sid="704041468054540" speed="5">
+                <animation framecount="2" loop="0" name="Hurt" pingpong="0" repeatcount="1" repeatto="0" sid="704041468054540" speed="1">
                     <frame duration="1" hotspotX="0.5" hotspotY="1" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-483897-free-knight-character-sprites-pixel-art\Knight_1\Hurt.png">
                         <collision-poly>
                             <point x="0.4375" y="0.0163934" />

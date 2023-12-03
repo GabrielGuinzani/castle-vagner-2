@@ -77,6 +77,34 @@
                         </action>
                     </actions>
                 </event-block>
+                <event-block sid="299958634306489">
+                    <conditions>
+                        <condition id="0" name="On function" sid="558374981834498" type="Function">
+                            <param id="0" name="Name">&quot;stun&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="699114285233985" type="Heroi">
+                            <param id="0" name="Instance variable">estado</param>
+                            <param id="1" name="Value">&quot;Hurt&quot;</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="327675696916449" type="System">
+                            <param id="0" name="Seconds">0.5</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="636270256062283" type="Heroi">
+                            <param id="0" name="Instance variable">stun</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="528187424191387" type="Heroi">
+                            <param id="0" name="Instance variable">estado</param>
+                            <param id="1" name="Value">&quot;Walk&quot;</param>
+                        </action>
+                        <action id="-13" name="Set boolean" sid="903206213881351" type="Heroi">
+                            <param id="0" name="Instance variable">atacando</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
                 <event-block sid="242116539203600">
                     <conditions>
                         <condition id="0" name="On function" sid="534129845495265" type="Function">
@@ -192,6 +220,11 @@
                     <param id="1" name="Comparison">1</param>
                     <param id="2" name="Value">&quot;Dead&quot;</param>
                 </condition>
+                <condition id="-7" name="Compare instance variable" sid="847303803656303" type="Heroi">
+                    <param id="0" name="Instance variable">estado</param>
+                    <param id="1" name="Comparison">1</param>
+                    <param id="2" name="Value">&quot;Hurt&quot;</param>
+                </condition>
             </conditions>
             <actions />
             <sub-events>
@@ -227,6 +260,11 @@
                             <conditions>
                                 <condition id="0" name="On key pressed" sid="908531786208422" type="Keyboard">
                                     <param id="0" name="Key">90</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="610301311277005" type="Heroi">
+                                    <param id="0" name="Instance variable">estado</param>
+                                    <param id="1" name="Comparison">1</param>
+                                    <param id="2" name="Value">&quot;Hurt&quot;</param>
                                 </condition>
                             </conditions>
                             <actions />
@@ -442,6 +480,11 @@
                                 <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="120736229668208" type="Heroi">
                                     <param id="0" name="Instance variable">atacando</param>
                                 </condition>
+                                <condition id="-7" name="Compare instance variable" sid="194064769303118" type="Heroi">
+                                    <param id="0" name="Instance variable">estado</param>
+                                    <param id="1" name="Comparison">1</param>
+                                    <param id="2" name="Value">&quot;Hurt&quot;</param>
+                                </condition>
                                 <condition id="-7" name="Compare instance variable" sid="414818543458735" type="Heroi">
                                     <param id="0" name="Instance variable">estado</param>
                                     <param id="1" name="Comparison">1</param>
@@ -579,7 +622,28 @@
                     <param id="0" name="Name">&quot;dano&quot;</param>
                     <param id="1" name="Parameter {n}">ataquesInimigos.At(1,right(lordFarier.AnimationName,1),2)</param>
                 </action>
+                <action id="-11" name="Add to" sid="145652067763021" type="Heroi">
+                    <param id="0" name="Instance variable">stun</param>
+                    <param id="1" name="Value">1</param>
+                </action>
             </actions>
+            <sub-events>
+                <event-block sid="397222856876304">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="433222257023357" type="Heroi">
+                            <param id="0" name="Instance variable">stun</param>
+                            <param id="1" name="Comparison">5</param>
+                            <param id="2" name="Value">Heroi.stun_max</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="769073380819037" type="Function">
+                            <param id="0" name="Name">&quot;stun&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
         </event-block>
         <event-block sid="323981181705778">
             <conditions>

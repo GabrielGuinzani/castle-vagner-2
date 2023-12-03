@@ -355,6 +355,8 @@
                         <acerto>0</acerto>
                         <vida>68</vida>
                         <mana>22</mana>
+                        <stun>0</stun>
+                        <stun_max>1</stun_max>
                     </instance-variables>
                     <behavior-instances>
                         <behavior-instance type="8Direction">
@@ -486,7 +488,7 @@
                         <decisao_timer>0.1</decisao_timer>
                         <combo>1</combo>
                         <combo_max>2</combo_max>
-                        <vida>350</vida>
+                        <vida>300</vida>
                         <dead>false</dead>
                         <stun>0</stun>
                         <stun_max>3</stun_max>
