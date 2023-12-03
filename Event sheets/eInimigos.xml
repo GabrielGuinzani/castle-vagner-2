@@ -101,6 +101,10 @@
                     <param id="0" name="Instance variable">stun</param>
                     <param id="1" name="Value">0</param>
                 </action>
+                <action id="4" name="Set animation" sid="670822141821177" type="lordFarier">
+                    <param id="0" name="Animation">&quot;Attack&quot;&amp;lordFarier.combo</param>
+                    <param id="1" name="From">1</param>
+                </action>
             </actions>
         </event-block>
         <event-block sid="918064223781699">
@@ -121,35 +125,29 @@
                 <action behavior="Sine" id="0" name="Set active" sid="983254341849104" type="lordFarier">
                     <param id="0" name="State">0</param>
                 </action>
-                <action id="4" name="Set animation" sid="779056591838884" type="lordFarier">
-                    <param id="0" name="Animation">&quot;Attack&quot;&amp;lordFarier.combo</param>
+            </actions>
+        </event-block>
+        <event-block sid="836070889384418">
+            <conditions>
+                <condition id="-7" name="Compare instance variable" sid="474733142564598" type="lordFarier">
+                    <param id="0" name="Instance variable">vida</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="208764252851638" type="lordFarier">
+                    <param id="0" name="Instance variable">dead</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="916371517110430" type="lordFarier">
+                    <param id="0" name="Animation">&quot;Dead&quot;</param>
                     <param id="1" name="From">1</param>
                 </action>
+                <action id="-13" name="Set boolean" sid="811439960162585" type="lordFarier">
+                    <param id="0" name="Instance variable">dead</param>
+                    <param id="1" name="Value">1</param>
+                </action>
             </actions>
-            <sub-events>
-                <event-block sid="836070889384418">
-                    <conditions>
-                        <condition id="-7" name="Compare instance variable" sid="474733142564598" type="lordFarier">
-                            <param id="0" name="Instance variable">vida</param>
-                            <param id="1" name="Comparison">3</param>
-                            <param id="2" name="Value">0</param>
-                        </condition>
-                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="208764252851638" type="lordFarier">
-                            <param id="0" name="Instance variable">dead</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="4" name="Set animation" sid="916371517110430" type="lordFarier">
-                            <param id="0" name="Animation">&quot;Dead&quot;</param>
-                            <param id="1" name="From">1</param>
-                        </action>
-                        <action id="-13" name="Set boolean" sid="811439960162585" type="lordFarier">
-                            <param id="0" name="Instance variable">dead</param>
-                            <param id="1" name="Value">1</param>
-                        </action>
-                    </actions>
-                </event-block>
-            </sub-events>
         </event-block>
         <event-group description="" sid="217325021675489" title="Movimentacao">
             <sub-events>
