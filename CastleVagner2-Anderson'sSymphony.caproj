@@ -476,18 +476,7 @@
                             <point x="0.32" y="0.5" />
                         </collision-poly>
                     </frame>
-                    <frame duration="4" hotspotX="0.182927" hotspotY="0.983607">
-                        <collision-poly>
-                            <point x="0.22" y="0.166667" />
-                            <point x="0.5" y="0.0454545" />
-                            <point x="0.577561" y="0.45082" />
-                            <point x="0.62" y="0.712121" />
-                            <point x="0.5" y="0.984848" />
-                            <point x="0.04" y="0.969697" />
-                            <point x="0.32" y="0.5" />
-                        </collision-poly>
-                    </frame>
-                    <frame duration="2" hotspotX="0.372549" hotspotY="0.984848">
+                    <frame duration="1" hotspotX="0.372549" hotspotY="0.984848">
                         <collision-poly>
                             <point x="0.22" y="0.166667" />
                             <point x="0.5" y="0.0454545" />
@@ -509,7 +498,18 @@
                             <point x="0.32" y="0.5" />
                         </collision-poly>
                     </frame>
-                    <frame duration="1" hotspotX="0.372549" hotspotY="0.984848">
+                    <frame duration="4" hotspotX="0.182927" hotspotY="0.983607">
+                        <collision-poly>
+                            <point x="0.22" y="0.166667" />
+                            <point x="0.5" y="0.0454545" />
+                            <point x="0.577561" y="0.45082" />
+                            <point x="0.62" y="0.712121" />
+                            <point x="0.5" y="0.984848" />
+                            <point x="0.04" y="0.969697" />
+                            <point x="0.32" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="2" hotspotX="0.372549" hotspotY="0.984848">
                         <collision-poly>
                             <point x="0.22" y="0.166667" />
                             <point x="0.5" y="0.0454545" />
@@ -1043,7 +1043,7 @@
                         </collision-poly>
                     </frame>
                 </animation>
-                <animation framecount="4" loop="1" name="Hitstun" pingpong="0" repeatcount="1" repeatto="0" sid="108906791556555" speed="10">
+                <animation framecount="4" loop="1" name="Hitstun" pingpong="0" repeatcount="1" repeatto="0" sid="108906791556555" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="1" original-source="C:\Users\gabri\OneDrive\Área de Trabalho\DevJogos\craftpix-net-431295-free-wizard-sprite-sheets-pixel-art\Wanderer Magican\Hurt.png">
                         <collision-poly>
                             <point x="0.295455" y="0.216667" />

@@ -74,59 +74,6 @@
                 </event-block>
             </sub-events>
         </event-block>
-        <event-block sid="705984827304014">
-            <conditions>
-                <condition id="-8" name="Compare two values" sid="130734690661574" type="System">
-                    <param id="0" name="First value">lordFarier.stun</param>
-                    <param id="1" name="Comparison">5</param>
-                    <param id="2" name="Second value">lordFarier.stun_max</param>
-                </condition>
-                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="533955311443226" type="lordFarier">
-                    <param id="0" name="Instance variable">dead</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action behavior="Sine" id="0" name="Set active" sid="424632288416945" type="lordFarier">
-                    <param id="0" name="State">1</param>
-                </action>
-                <action id="4" name="Set animation" sid="925300503975127" type="lordFarier">
-                    <param id="0" name="Animation">&quot;Hitstun&quot;</param>
-                    <param id="1" name="From">1</param>
-                </action>
-                <action id="-16" name="Wait" sid="610338293422562" type="System">
-                    <param id="0" name="Seconds">0.5</param>
-                </action>
-                <action behavior="MoveTo" id="9" name="Stop" sid="697427594121251" type="lordFarier" />
-                <action id="-10" name="Set value" sid="964979152451765" type="lordFarier">
-                    <param id="0" name="Instance variable">stun</param>
-                    <param id="1" name="Value">0</param>
-                </action>
-                <action id="4" name="Set animation" sid="670822141821177" type="lordFarier">
-                    <param id="0" name="Animation">&quot;Attack&quot;&amp;lordFarier.combo</param>
-                    <param id="1" name="From">1</param>
-                </action>
-            </actions>
-        </event-block>
-        <event-block sid="918064223781699">
-            <conditions>
-                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="433718143044829" type="lordFarier">
-                    <param id="0" name="Instance variable">dead</param>
-                </condition>
-                <condition id="-8" name="Compare two values" sid="738097871616936" type="System">
-                    <param id="0" name="First value">lordFarier.AnimationName</param>
-                    <param id="1" name="Comparison">0</param>
-                    <param id="2" name="Second value">&quot;Hitstun&quot;</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="-16" name="Wait" sid="595596776381402" type="System">
-                    <param id="0" name="Seconds">0.5</param>
-                </action>
-                <action behavior="Sine" id="0" name="Set active" sid="983254341849104" type="lordFarier">
-                    <param id="0" name="State">0</param>
-                </action>
-            </actions>
-        </event-block>
         <event-block sid="836070889384418">
             <conditions>
                 <condition id="-7" name="Compare instance variable" sid="474733142564598" type="lordFarier">
@@ -146,6 +93,64 @@
                 <action id="-13" name="Set boolean" sid="811439960162585" type="lordFarier">
                     <param id="0" name="Instance variable">dead</param>
                     <param id="1" name="Value">1</param>
+                </action>
+                <action behavior="MoveTo" id="9" name="Stop" sid="913104872062101" type="lordFarier" />
+            </actions>
+        </event-block>
+        <event-block sid="705984827304014">
+            <conditions>
+                <condition id="-8" name="Compare two values" sid="130734690661574" type="System">
+                    <param id="0" name="First value">lordFarier.stun</param>
+                    <param id="1" name="Comparison">5</param>
+                    <param id="2" name="Second value">lordFarier.stun_max</param>
+                </condition>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="533955311443226" type="lordFarier">
+                    <param id="0" name="Instance variable">dead</param>
+                </condition>
+                <condition id="-8" name="Compare two values" sid="596534788022595" type="System">
+                    <param id="0" name="First value">lordFarier.AnimationName</param>
+                    <param id="1" name="Comparison">1</param>
+                    <param id="2" name="Second value">&quot;Dead&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="925300503975127" type="lordFarier">
+                    <param id="0" name="Animation">&quot;Hitstun&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+                <action id="-16" name="Wait" sid="610338293422562" type="System">
+                    <param id="0" name="Seconds">0.5</param>
+                </action>
+                <action behavior="MoveTo" id="9" name="Stop" sid="697427594121251" type="lordFarier" />
+                <action id="-10" name="Set value" sid="964979152451765" type="lordFarier">
+                    <param id="0" name="Instance variable">stun</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="4" name="Set animation" sid="610475319450617" type="lordFarier">
+                    <param id="0" name="Animation">&quot;Attack&quot;&amp;lordFarier.combo</param>
+                    <param id="1" name="From">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="918064223781699">
+            <conditions>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="433718143044829" type="lordFarier">
+                    <param id="0" name="Instance variable">dead</param>
+                </condition>
+                <condition id="-8" name="Compare two values" sid="738097871616936" type="System">
+                    <param id="0" name="First value">lordFarier.AnimationName</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Second value">&quot;Hitstun&quot;</param>
+                </condition>
+                <condition id="-8" name="Compare two values" sid="447499996072131" type="System">
+                    <param id="0" name="First value">lordFarier.AnimationName</param>
+                    <param id="1" name="Comparison">1</param>
+                    <param id="2" name="Second value">&quot;Dead&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-16" name="Wait" sid="595596776381402" type="System">
+                    <param id="0" name="Seconds">0.5</param>
                 </action>
             </actions>
         </event-block>
@@ -193,13 +198,18 @@
                             <param id="0" name="Object">lordFarier</param>
                             <param id="1" name="Expression">distance(lordFarier.X,lordFarier.Y,Heroi.X,Heroi.Y)</param>
                             <param id="2" name="Comparison">3</param>
-                            <param id="3" name="Value">320</param>
+                            <param id="3" name="Value">200</param>
                         </condition>
                         <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="161816918090263" type="lordFarier">
                             <param id="0" name="Instance variable">ativo</param>
                         </condition>
                         <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="406902346101763" type="lordFarier">
                             <param id="0" name="Instance variable">dead</param>
+                        </condition>
+                        <condition id="-8" name="Compare two values" sid="626458582288690" type="System">
+                            <param id="0" name="First value">lordFarier.AnimationName</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Second value">&quot;Hitstun&quot;</param>
                         </condition>
                     </conditions>
                     <actions>
@@ -396,11 +406,6 @@
                         <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="267368123825337" type="lordFarier">
                             <param id="0" name="Instance variable">dead</param>
                         </condition>
-                        <condition id="-8" name="Compare two values" sid="440795916723089" type="System">
-                            <param id="0" name="First value">lordFarier.AnimationName</param>
-                            <param id="1" name="Comparison">1</param>
-                            <param id="2" name="Second value">&quot;Hitstun&quot;</param>
-                        </condition>
                     </conditions>
                     <actions />
                     <sub-events>
@@ -410,6 +415,11 @@
                                     <param id="0" name="Value">lordFarier.Y</param>
                                     <param id="1" name="Lower bound">Heroi.Y -2</param>
                                     <param id="2" name="Upper bound">Heroi.Y + 2</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="704625825308583" type="System">
+                                    <param id="0" name="First value">lordFarier.AnimationName</param>
+                                    <param id="1" name="Comparison">1</param>
+                                    <param id="2" name="Second value">&quot;Hitstun&quot;</param>
                                 </condition>
                             </conditions>
                             <actions>
@@ -423,6 +433,11 @@
                         <event-block sid="886807134476172">
                             <conditions>
                                 <condition id="-22" name="Else" sid="325474656564582" type="System" />
+                                <condition id="-8" name="Compare two values" sid="666544708175385" type="System">
+                                    <param id="0" name="First value">lordFarier.AnimationName</param>
+                                    <param id="1" name="Comparison">1</param>
+                                    <param id="2" name="Second value">&quot;Hitstun&quot;</param>
+                                </condition>
                             </conditions>
                             <actions />
                             <sub-events>
@@ -472,6 +487,11 @@
                                                 <condition id="3" name="Compare frame" sid="907731044701860" type="lordFarier">
                                                     <param id="0" name="Comparison">0</param>
                                                     <param id="1" name="Number">lordFarier.AnimationFrameCount - 1 </param>
+                                                </condition>
+                                                <condition id="-8" name="Compare two values" sid="324778771666792" type="System">
+                                                    <param id="0" name="First value">lordFarier.AnimationName</param>
+                                                    <param id="1" name="Comparison">1</param>
+                                                    <param id="2" name="Second value">&quot;Hitstun&quot;</param>
                                                 </condition>
                                             </conditions>
                                             <actions>

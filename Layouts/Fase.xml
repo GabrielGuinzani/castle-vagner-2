@@ -391,8 +391,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>26.633247375</x>
-                        <y>146.244857788</y>
+                        <x>22.341438293</x>
+                        <y>152.920944214</y>
                         <z>0</z>
                         <width>27.087028503</width>
                         <height>39.727642059</height>
@@ -524,8 +524,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>237.255554199</x>
-                        <y>152.976119995</y>
+                        <x>271.589355469</x>
+                        <y>148.684661865</y>
                         <z>0</z>
                         <width>19.709592819</width>
                         <height>37.229232788</height>
@@ -676,7 +676,7 @@
                 </instance>
                 <instance type="manaFundo" uid="25">
                     <properties>
-                        <initial-visibility>Visible</initial-visibility>
+                        <initial-visibility>Invisible</initial-visibility>
                         <initial-animation>Default</initial-animation>
                         <initial-frame>0</initial-frame>
                         <collisions>Enabled</collisions>
@@ -740,7 +740,7 @@
                 </instance>
                 <instance type="manaBarBehind" uid="29">
                     <properties>
-                        <initial-visibility>Visible</initial-visibility>
+                        <initial-visibility>Invisible</initial-visibility>
                         <hotspot>Top-left</hotspot>
                     </properties>
                     <blend-mode>0</blend-mode>
@@ -760,7 +760,7 @@
                 </instance>
                 <instance type="manaBar" uid="28">
                     <properties>
-                        <initial-visibility>Visible</initial-visibility>
+                        <initial-visibility>Invisible</initial-visibility>
                         <hotspot>Top-left</hotspot>
                     </properties>
                     <behavior-instances>
