@@ -49,23 +49,11 @@
                             <param id="1" name="Lower bound">Heroi.sombra -3</param>
                             <param id="2" name="Upper bound">Heroi.sombra +3</param>
                         </condition>
-                        <condition id="-8" name="Compare two values" sid="601238710410969" type="System">
-                            <param id="0" name="First value">lordFarier.AnimationName</param>
-                            <param id="1" name="Comparison">1</param>
-                            <param id="2" name="Second value">&quot;Hitstun&quot;</param>
-                        </condition>
                         <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="993988324797465" type="lordFarier">
                             <param id="0" name="Instance variable">dead</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="4" name="Set animation" sid="545024572340029" type="lordFarier">
-                            <param id="0" name="Animation">&quot;Hitstun&quot;</param>
-                            <param id="1" name="From">1</param>
-                        </action>
-                        <action behavior="Sine" id="0" name="Set active" sid="424632288416945" type="lordFarier">
-                            <param id="0" name="State">1</param>
-                        </action>
                         <action id="-10" name="Set value" sid="430571158740730" type="Heroi">
                             <param id="0" name="Instance variable">combo_timer</param>
                             <param id="1" name="Value">1</param>
@@ -74,9 +62,9 @@
                             <param id="0" name="Instance variable">acerto</param>
                             <param id="1" name="Value">1</param>
                         </action>
-                        <action behavior="MoveTo" id="9" name="Stop" sid="697427594121251" type="lordFarier" />
-                        <action id="-16" name="Wait" sid="251525559290259" type="System">
-                            <param id="0" name="Seconds">0.5</param>
+                        <action id="-11" name="Add to" sid="507001868936028" type="lordFarier">
+                            <param id="0" name="Instance variable">stun</param>
+                            <param id="1" name="Value">1</param>
                         </action>
                         <action id="-12" name="Subtract from" sid="309136874738226" type="lordFarier">
                             <param id="0" name="Instance variable">vida</param>
@@ -86,24 +74,56 @@
                 </event-block>
             </sub-events>
         </event-block>
+        <event-block sid="705984827304014">
+            <conditions>
+                <condition id="-8" name="Compare two values" sid="130734690661574" type="System">
+                    <param id="0" name="First value">lordFarier.stun</param>
+                    <param id="1" name="Comparison">5</param>
+                    <param id="2" name="Second value">lordFarier.stun_max</param>
+                </condition>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="533955311443226" type="lordFarier">
+                    <param id="0" name="Instance variable">dead</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Sine" id="0" name="Set active" sid="424632288416945" type="lordFarier">
+                    <param id="0" name="State">1</param>
+                </action>
+                <action id="4" name="Set animation" sid="925300503975127" type="lordFarier">
+                    <param id="0" name="Animation">&quot;Hitstun&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+                <action id="-16" name="Wait" sid="610338293422562" type="System">
+                    <param id="0" name="Seconds">0.5</param>
+                </action>
+                <action behavior="MoveTo" id="9" name="Stop" sid="697427594121251" type="lordFarier" />
+                <action id="-10" name="Set value" sid="964979152451765" type="lordFarier">
+                    <param id="0" name="Instance variable">stun</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
         <event-block sid="918064223781699">
             <conditions>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="433718143044829" type="lordFarier">
+                    <param id="0" name="Instance variable">dead</param>
+                </condition>
                 <condition id="-8" name="Compare two values" sid="738097871616936" type="System">
                     <param id="0" name="First value">lordFarier.AnimationName</param>
                     <param id="1" name="Comparison">0</param>
                     <param id="2" name="Second value">&quot;Hitstun&quot;</param>
                 </condition>
-                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="433718143044829" type="lordFarier">
-                    <param id="0" name="Instance variable">dead</param>
-                </condition>
             </conditions>
             <actions>
-                <action id="4" name="Set animation" sid="390023713458544" type="lordFarier">
-                    <param id="0" name="Animation">&quot;Idle&quot;</param>
-                    <param id="1" name="From">1</param>
+                <action id="-16" name="Wait" sid="595596776381402" type="System">
+                    <param id="0" name="Seconds">0.5</param>
                 </action>
                 <action behavior="Sine" id="0" name="Set active" sid="983254341849104" type="lordFarier">
                     <param id="0" name="State">0</param>
+                </action>
+                <action id="4" name="Set animation" sid="779056591838884" type="lordFarier">
+                    <param id="0" name="Animation">&quot;Attack&quot;&amp;lordFarier.combo</param>
+                    <param id="1" name="From">1</param>
                 </action>
             </actions>
             <sub-events>
@@ -378,105 +398,129 @@
                         <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="267368123825337" type="lordFarier">
                             <param id="0" name="Instance variable">dead</param>
                         </condition>
+                        <condition id="-8" name="Compare two values" sid="440795916723089" type="System">
+                            <param id="0" name="First value">lordFarier.AnimationName</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Second value">&quot;Hitstun&quot;</param>
+                        </condition>
                     </conditions>
                     <actions />
                     <sub-events>
-                        <event-block sid="595131348243021">
+                        <event-block sid="849021216317920">
                             <conditions>
-                                <condition id="-11" name="For Each" sid="992466918727142" type="System">
-                                    <param id="0" name="Object">lordFarier</param>
+                                <condition id="-21" name="Is between values" sid="847635566700241" type="System">
+                                    <param id="0" name="Value">lordFarier.Y</param>
+                                    <param id="1" name="Lower bound">Heroi.Y -2</param>
+                                    <param id="2" name="Upper bound">Heroi.Y + 2</param>
                                 </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="283297989673378" type="lordFarier">
+                                    <param id="0" name="Animation">&quot;Attack&quot;&amp;lordFarier.combo</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action behavior="MoveTo" id="9" name="Stop" sid="940094507078968" type="lordFarier" />
+                            </actions>
+                        </event-block>
+                        <event-block sid="886807134476172">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="325474656564582" type="System" />
                             </conditions>
                             <actions />
                             <sub-events>
-                                <event-block sid="849021216317920">
+                                <event-block sid="165665725780906">
                                     <conditions>
-                                        <condition id="-21" name="Is between values" sid="847635566700241" type="System">
-                                            <param id="0" name="Value">lordFarier.Y</param>
-                                            <param id="1" name="Lower bound">Heroi.Y -2</param>
-                                            <param id="2" name="Upper bound">Heroi.Y + 2</param>
-                                        </condition>
-                                        <condition id="-8" name="Compare two values" sid="519095226108340" type="System">
-                                            <param id="0" name="First value">lordFarier.AnimationName</param>
-                                            <param id="1" name="Comparison">1</param>
-                                            <param id="2" name="Second value">&quot;Hitstun&quot;</param>
+                                        <condition id="-1" name="Compare X" sid="497283456159880" type="lordFarier">
+                                            <param id="0" name="Comparison">4</param>
+                                            <param id="1" name="X co-ordinate">Heroi.X</param>
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action id="4" name="Set animation" sid="283297989673378" type="lordFarier">
-                                            <param id="0" name="Animation">&quot;Attack&quot;&amp;lordFarier.combo</param>
-                                            <param id="1" name="From">1</param>
+                                        <action behavior="MoveTo" id="4" name="Move to XY" sid="847650365609461" type="lordFarier">
+                                            <param id="0" name="X">Heroi.X +12</param>
+                                            <param id="1" name="Y">Heroi.sombra</param>
                                         </action>
-                                        <action behavior="MoveTo" id="9" name="Stop" sid="940094507078968" type="lordFarier" />
+                                        <action id="-16" name="Wait" sid="390104311827225" type="System">
+                                            <param id="0" name="Seconds">0.3</param>
+                                        </action>
                                     </actions>
                                 </event-block>
-                                <event-block sid="886807134476172">
+                                <event-block sid="879973194235794">
                                     <conditions>
-                                        <condition id="-22" name="Else" sid="325474656564582" type="System" />
+                                        <condition id="-22" name="Else" sid="923154693076681" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="MoveTo" id="4" name="Move to XY" sid="519146273804479" type="lordFarier">
+                                            <param id="0" name="X">Heroi.X -12</param>
+                                            <param id="1" name="Y">Heroi.sombra</param>
+                                        </action>
+                                        <action id="-16" name="Wait" sid="725190883994588" type="System">
+                                            <param id="0" name="Seconds">0.3</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="344822090269205">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="914842552091447" type="System">
+                                            <param id="0" name="First value">left(lordFarier.AnimationName,6)</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">&quot;Attack&quot;</param>
+                                        </condition>
                                     </conditions>
                                     <actions />
                                     <sub-events>
-                                        <event-block sid="165665725780906">
+                                        <event-block sid="832746549037973">
                                             <conditions>
-                                                <condition id="-1" name="Compare X" sid="497283456159880" type="lordFarier">
-                                                    <param id="0" name="Comparison">4</param>
-                                                    <param id="1" name="X co-ordinate">Heroi.X</param>
+                                                <condition id="3" name="Compare frame" sid="907731044701860" type="lordFarier">
+                                                    <param id="0" name="Comparison">0</param>
+                                                    <param id="1" name="Number">lordFarier.AnimationFrameCount - 1 </param>
                                                 </condition>
                                             </conditions>
                                             <actions>
-                                                <action behavior="MoveTo" id="4" name="Move to XY" sid="847650365609461" type="lordFarier">
-                                                    <param id="0" name="X">Heroi.X +12</param>
-                                                    <param id="1" name="Y">Heroi.sombra</param>
+                                                <action id="4" name="Set animation" sid="278853419748090" type="lordFarier">
+                                                    <param id="0" name="Animation">&quot;Walk&quot;</param>
+                                                    <param id="1" name="From">1</param>
                                                 </action>
-                                                <action id="-16" name="Wait" sid="390104311827225" type="System">
+                                                <action id="-16" name="Wait" sid="248550561714434" type="System">
                                                     <param id="0" name="Seconds">0.3</param>
                                                 </action>
                                             </actions>
-                                        </event-block>
-                                        <event-block sid="879973194235794">
-                                            <conditions>
-                                                <condition id="-22" name="Else" sid="923154693076681" type="System" />
-                                            </conditions>
-                                            <actions>
-                                                <action behavior="MoveTo" id="4" name="Move to XY" sid="519146273804479" type="lordFarier">
-                                                    <param id="0" name="X">Heroi.X -12</param>
-                                                    <param id="1" name="Y">Heroi.sombra</param>
-                                                </action>
-                                                <action id="-16" name="Wait" sid="725190883994588" type="System">
-                                                    <param id="0" name="Seconds">0.3</param>
-                                                </action>
-                                            </actions>
-                                        </event-block>
-                                        <event-block sid="344822090269205">
-                                            <conditions>
-                                                <condition id="-8" name="Compare two values" sid="914842552091447" type="System">
-                                                    <param id="0" name="First value">left(lordFarier.AnimationName,6)</param>
-                                                    <param id="1" name="Comparison">0</param>
-                                                    <param id="2" name="Second value">&quot;Attack&quot;</param>
-                                                </condition>
-                                            </conditions>
-                                            <actions />
-                                            <sub-events>
-                                                <event-block sid="832746549037973">
-                                                    <conditions>
-                                                        <condition id="3" name="Compare frame" sid="907731044701860" type="lordFarier">
-                                                            <param id="0" name="Comparison">0</param>
-                                                            <param id="1" name="Number">lordFarier.AnimationFrameCount - 1 </param>
-                                                        </condition>
-                                                    </conditions>
-                                                    <actions>
-                                                        <action id="4" name="Set animation" sid="278853419748090" type="lordFarier">
-                                                            <param id="0" name="Animation">&quot;Walk&quot;</param>
-                                                            <param id="1" name="From">1</param>
-                                                        </action>
-                                                        <action id="-16" name="Wait" sid="248550561714434" type="System">
-                                                            <param id="0" name="Seconds">0.3</param>
-                                                        </action>
-                                                    </actions>
-                                                </event-block>
-                                            </sub-events>
                                         </event-block>
                                     </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="825980603352744">
+                            <conditions>
+                                <condition id="5" name="On any finished" sid="406855200707541" type="lordFarier" />
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="309480127432148">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="229805096922133" type="lordFarier">
+                                            <param id="0" name="Instance variable">combo</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Value">lordFarier.combo_max</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Set value" sid="401820290567818" type="lordFarier">
+                                            <param id="0" name="Instance variable">combo</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="771595078440192">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="229026843576601" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="-11" name="Add to" sid="595062022786513" type="lordFarier">
+                                            <param id="0" name="Instance variable">combo</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                    </actions>
                                 </event-block>
                             </sub-events>
                         </event-block>
@@ -496,40 +540,6 @@
                             <param id="1" name="Value">dt</param>
                         </action>
                     </actions>
-                </event-block>
-                <event-block sid="825980603352744">
-                    <conditions>
-                        <condition id="5" name="On any finished" sid="406855200707541" type="lordFarier" />
-                    </conditions>
-                    <actions />
-                    <sub-events>
-                        <event-block sid="309480127432148">
-                            <conditions>
-                                <condition id="-7" name="Compare instance variable" sid="229805096922133" type="lordFarier">
-                                    <param id="0" name="Instance variable">combo</param>
-                                    <param id="1" name="Comparison">5</param>
-                                    <param id="2" name="Value">lordFarier.combo_max</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="-10" name="Set value" sid="401820290567818" type="lordFarier">
-                                    <param id="0" name="Instance variable">combo</param>
-                                    <param id="1" name="Value">1</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <event-block sid="771595078440192">
-                            <conditions>
-                                <condition id="-22" name="Else" sid="229026843576601" type="System" />
-                            </conditions>
-                            <actions>
-                                <action id="-11" name="Add to" sid="595062022786513" type="lordFarier">
-                                    <param id="0" name="Instance variable">combo</param>
-                                    <param id="1" name="Value">1</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                    </sub-events>
                 </event-block>
                 <event-block sid="450838060743086">
                     <conditions>
@@ -568,7 +578,7 @@
                                     <actions>
                                         <action id="-10" name="Set value" sid="377792768082954" type="lordFarier">
                                             <param id="0" name="Instance variable">decisao_timer</param>
-                                            <param id="1" name="Value">random(1,4)</param>
+                                            <param id="1" name="Value">random(1,2)</param>
                                         </action>
                                     </actions>
                                 </event-block>
